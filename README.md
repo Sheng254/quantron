@@ -26,7 +26,6 @@ To access Quantron, simply visit the following website: https://sheng254.github.
 - Currently, there is no button or feature implemented to enable voice interaction with Quantron.
 
 ## Potential Enhancements for the Future
-- Fix the connectivity issue between the front-end (index.html, script.js & styles.css) and back-end (app.py) components.
 - Enhance the voice interaction feature for better accuracy and usability.
 - Add more features and capabilities to Quantron based on user feedback.
 - Enhance user-friendliness and interactivity by improving the overall design aesthetics.
