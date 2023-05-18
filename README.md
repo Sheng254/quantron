@@ -28,14 +28,14 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
 To access Quantron, simply visit the following website: https://sheng254.github.io/quantron/
 
 ## Known Issues
-- There is a known issue with connecting the front-end (index.html, script.js & styles.css) and back-end (app.py) components. I am actively working on resolving this issue. In the meantime, the application is currently limited to displaying the design and lacks full functionality.
-- The chat room functionality is still in progress and may not be as comprehensive as messaging platforms like WhatsApp or Telegram.
-- Currently, there is no button or feature implemented to enable voice interaction with Quantron.
+- The front-end (index.html, script.js & styles.css) and back-end (app.py) components are currently experiencing connectivity issues. As a result, the current state of the application is limited to displaying the design without complete functionality.
+- The chat room functionality is still a work in progress and may not be as comprehensive as popular messaging platforms like WhatsApp or Telegram. 
+- At the moment, there is no implemented button or feature for voice interaction with Quantron. 
 
 ## Potential Enhancements for the Future
 - Enhance the voice interaction feature for better accuracy and usability.
 - Add more features and capabilities to Quantron based on user feedback.
-- Enhance user-friendliness and interactivity by improving the overall design aesthetics.
+- Ameliorate user-friendliness and interactivity by improving the overall design aesthetics.
 - Integrate machine learning (ML) and deep learning (DL) algorithms to enable more precise and targeted responses.
 
 ## Contributing
