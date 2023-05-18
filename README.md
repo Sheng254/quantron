@@ -29,7 +29,7 @@ To access Quantron, simply visit the following website: https://sheng254.github.
 
 ## Known Issues
 - There is a known issue with connecting the front-end (index.html, script.js & styles.css) and back-end (app.py) components. I am actively working on resolving this issue. In the meantime, the application is currently limited to displaying the design and lacks full functionality.
-- The chatbox functionality is still in progress and may not be as comprehensive as messaging platforms like WhatsApp or Telegram.
+- The chat room functionality is still in progress and may not be as comprehensive as messaging platforms like WhatsApp or Telegram.
 - Currently, there is no button or feature implemented to enable voice interaction with Quantron.
 
 ## Potential Enhancements for the Future
