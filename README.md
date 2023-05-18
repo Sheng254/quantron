@@ -18,7 +18,7 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
 - **Type Interaction:** Simply type in the chat box and click the "Send" button to communicate with Quantron. This allows for text-based communication and is useful in situations where speech interaction may not be feasible.
 - **Voice Interaction:** Speak to Quantron using voice input for a more natural interaction. 
 - **Time Information:** Ask Quantron for the current time.
-- **Weather Information:** Get the latest weather updates.
+- **Weather Information:** Quantron will lead you to the latest weather updates via Google
 - **Open Websites:** Ask Quantron to open specific websites like YouTube or Google.
 - **Web Search:** Quantron can perform google searches for you.
 - **Music Playback:** Request Quantron to perform a YouTube search and enjoy playing the music yourself.
