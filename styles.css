@@ -1,0 +1,114 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.p-4 {
+  padding: 2rem;
+}
+
+.bg-gray-100 {
+  background-color: #f8f8f8;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.text-green-500 {
+  color: #22c55e;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.text-xl {
+  font-size: 1.5rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.text-2xl {
+  font-size: 1.25rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.list-decimal {
+  list-style-type: decimal;
+}
+
+.list-inside {
+  padding-left: 2rem;
+}
+
+.chatbox {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.chatlog-container {
+  max-height: 300px;
+  overflow-y: scroll;
+  padding: 1rem;
+  background-color: #fff;
+}
+
+.user-input-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f8f8;
+}
+
+.user-input-container input[type="text"] {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.user-input-container button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #22c55e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.chatlog .message {
+  margin-bottom: 1rem;
+}
+
+.message .message__content {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.message--received .message__content {
+  background-color: #f8f8f8;
+}
+
+.message--sent .message__content {
+  background-color: #22c55e;
+  color: #fff;
+}
