@@ -1,5 +1,6 @@
 # Quantron - Personal Assistant
 Welcome to Quantron, your personal assistant powered by quantum technology! Quantron is designed to assist you with various tasks and provide helpful information.
+![Quantron](Quantron.jpg)
 
 ## Features
 - **Interactive Chat:** Engage with Quantron through text-based communication using specific keywords and phrases. Quantron responds with sarcastic pre-scripted messages based on the recognized input. Please note that the responses are limited to the predetermined set of keywords and phrases.
