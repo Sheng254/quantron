@@ -15,8 +15,9 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
 - **Calculations:** Quantron can perform simple arithmetic for you.
 - **Music Playback:** Request Quantron to perform a YouTube search and enjoy playing the music yourself.
 
-## Assess
-You can access Quantron by visiting the following website: https://sheng254.github.io/quantron/
+## Accessing Quantron
+
+To access Quantron, simply visit the following website: https://sheng254.github.io/quantron/
 
 
 ## Known Issues
