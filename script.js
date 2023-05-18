@@ -44,7 +44,7 @@ function displayBotMessage(message) {
 
 // Function to send user message to the server
 function sendUserMessageToServer(message) {
-    fetch('https://sheng254.github.io/quantron/user-message', {
+    fetch('/user-message', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
