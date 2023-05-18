@@ -24,10 +24,12 @@ You can access Quantron by visiting the following website: https://sheng254.gith
 - The chatbox functionality is still in progress and may not be as comprehensive as messaging platforms like WhatsApp or Telegram.
 - Currently, there is no button or feature implemented to enable voice interaction with Quantron.
 
-## Future Improvements
+## Potential Enhancements for the Future
 - Fix the connectivity issue between the front-end (index.html, script.js & styles.css) and back-end (app.py) components.
 - Enhance the voice interaction feature for better accuracy and usability.
 - Add more features and capabilities to Quantron based on user feedback.
+- Enhance user-friendliness and interactivity by improving the overall design aesthetics.
+- Integrate machine learning (ML) and deep learning (DL) algorithms to enable more precise and targeted responses.
 
 ## Contributing
 Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
