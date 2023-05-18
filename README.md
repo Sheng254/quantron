@@ -12,6 +12,7 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
    - index.html (Frontend masterpiece)
    - styles.css (Aesthetically pleasing touch)
    - script.js (Interactive wizardry)
+- Displayed on the GitHub web platform
 
 ## Features
 - **Interactive Chat:** Engage with Quantron through text-based communication using specific keywords and phrases. Quantron responds with sarcastic pre-scripted messages based on the recognised input. Please note that the responses are limited to the predetermined set of keywords and phrases.
