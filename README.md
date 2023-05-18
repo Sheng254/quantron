@@ -39,7 +39,7 @@ To access Quantron, simply visit the following website: https://sheng254.github.
 - Integrate machine learning (ML) and deep learning (DL) algorithms to enable more precise and targeted responses.
 
 ## Contributing
-Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
+Contributions are welcome! Feel free to reach out with your suggestions, bug reports, or feature requests.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
