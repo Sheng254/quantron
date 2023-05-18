@@ -5,7 +5,13 @@ import speech_recognition as sr
 from nltk.chat.util import Chat, reflections
 import sys
 import random
+from flask import Flask, render_template
 
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 
 class AIAssistant:
@@ -202,3 +208,5 @@ class AIAssistant:
 if __name__ == '__main__':
     assistant = AIAssistant()
     assistant.start()
+    app = Flask(__name__)
+
