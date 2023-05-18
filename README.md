@@ -6,7 +6,7 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
 
 ## Features
 - **Interactive Chat:** Engage with Quantron through text-based communication using specific keywords and phrases. Quantron responds with sarcastic pre-scripted messages based on the recognised input. Please note that the responses are limited to the predetermined set of keywords and phrases.
-- **Type Interaction:**: Simply type in the chat box and click the "Send" button to communicate with Quantron. This allows for text-based communication and is useful in situations where speech interaction may not be feasible.
+- **Type Interaction:** Simply type in the chat box and click the "Send" button to communicate with Quantron. This allows for text-based communication and is useful in situations where speech interaction may not be feasible.
 - **Voice Interaction:** Speak to Quantron using voice input for a more natural interaction. 
 - **Time Information:** Ask Quantron for the current time.
 - **Weather Information:** Get the latest weather updates.
