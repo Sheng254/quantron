@@ -5,7 +5,7 @@ import speech_recognition as sr
 from nltk.chat.util import Chat, reflections
 import sys
 import random
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 
 class AIAssistant:
@@ -204,6 +204,16 @@ app = Flask(__name__)
 assistant = AIAssistant()
 
 # Flask routes and endpoints go here
+@app.route("/",methods=['GET', 'POST'])
+def index():
+    if request.method == "POST":
+        userPrompt = request.json['message']
+        assistant.chat(userPrompt)
+    else:
+        return render_template("index.html")
+
+
+
 
 if __name__ == '__main__':
     app.run()

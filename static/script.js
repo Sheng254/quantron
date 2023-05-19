@@ -44,17 +44,17 @@ function displayBotMessage(message) {
 
 // Function to send user message to the server
 function sendUserMessageToServer(message) {
-    fetch('/user-message', {
+    fetch('/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ message: message }),
     })
-    .then(response => response.json())
-    .then(data => {
-        const botResponse = data.response;
-        displayBotMessage(botResponse);
+    .then(response => response.text())
+    .then(text => {
+        console.log(text);
+        displayBotMessage(text);
     })
     .catch(error => {
         console.error('Error:', error);
