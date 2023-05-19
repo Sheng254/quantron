@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Welcome to Quantron, your personal assistant!</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
 </head>
 <body>
     <div class="p-4 bg-gray-100 rounded-lg">
@@ -17,18 +17,18 @@
 
         <div class="chatbox">
             <div class="chatlog-container">
-                <div class="chatlog"></div>
+                <div id="chatlog"></div>
             </div>
             <div class="user-input-container">
                 <input type="text" id="userInput" placeholder="Type your message...">
-                <button id="sendButton">Send</button>
+                <button type="submit" id="sendButton">Send</button>
             </div>
         </div>
         
         <div id="userResponseContainer"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../static/script.js"></script>
 </body>
 </html>
 
