@@ -12,7 +12,7 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
    - index.html (Frontend masterpiece)
    - styles.css (Aesthetically pleasing touch)
    - script.js (Interactive wizardry)
-- Displayed on the GitHub web platform
+- Displayed on the GitHub web platform (TBC as we might be using other platforms)
 
 ## Features
 - **Interactive Chat:** Engage with Quantron through text-based communication using specific keywords and phrases. Quantron responds with sarcastic pre-scripted messages based on the recognised input. Please note that the responses are limited to the predetermined set of keywords and phrases.
@@ -25,13 +25,15 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
 - **Music Playback:** Request Quantron to perform a YouTube search and enjoy playing the music yourself.
 - **Calculations:** Quantron can perform simple arithmetic for you.
 
-## Accessing Quantron
-To access Quantron, simply visit the following website: https://sheng254.github.io/quantron/
+## Accessing Quantron (BETA)
+To access Quantron, simply visit the following website: https://sheng254.github.io/quantron/ (TBC as we might be using other platforms)
 
 ## Known Issues
 - The front-end (index.html, script.js & styles.css) and back-end (app.py) components are currently experiencing connectivity issues. As a result, the current state of the application is limited to displaying the design without complete functionality.
 - The chat room functionality is still a work in progress and may not be as comprehensive as popular messaging platforms like WhatsApp or Telegram. 
 - At the moment, there is no implemented button or feature for voice interaction with Quantron. 
+- Flask does not work on GitPages, which can only host static pages. This poses a challenge in providing access to the chatbot. Alternative solutions such as exploring other hosting platforms need to be explored to make the chatbot accessible to users.
+- Some python libraries used in the application rely on local execution and do not work when accessed online. Consideration should be given to finding alternatives or adapting the code to ensure seamless execution in different environments.
 
 ## Potential Enhancements for the Future
 - Enhance the voice interaction feature for better accuracy and usability.
