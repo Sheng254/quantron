@@ -1,6 +1,6 @@
 # Quantron - Personal Assistant
 
-                                                  ![Quantron](Quantron.jpg)
+![Quantron](Quantron.jpg)
 
 Welcome to Quantron, your personal assistant powered by quantum technology! Quantron is designed to chat, assist you with various tasks and provide helpful information.
 
