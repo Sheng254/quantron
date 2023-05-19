@@ -1,3 +1,6 @@
-package1
-package2
-package3
+datetime
+webbrowser
+pyttsx3
+speech_recognition
+nltk
+flask
