@@ -1,6 +1,8 @@
-datetime
-webbrowser
-pyttsx3
-speech_recognition
-nltk
-flask
+certifi==2023.5.7
+charset-normalizer==3.1.0
+docopt==0.6.2
+idna==3.4
+pipreqs==0.4.13
+requests==2.30.0
+urllib3==2.0.2
+yarg==0.1.9
