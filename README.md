@@ -32,7 +32,6 @@ To access Quantron, simply visit the following website: (the link will be provid
 - The front-end (index.html, script.js & styles.css) and back-end (app.py) components are currently experiencing connectivity issues. As a result, the current state of the application is limited to displaying the design without complete functionality.
 - The chat room functionality is still a work in progress and may not be as comprehensive as popular messaging platforms like WhatsApp or Telegram. 
 - At the moment, there is no implemented button or feature for voice interaction with Quantron. 
-- Flask does not work on GitPages, which can only host static pages. This poses a challenge in providing access to the chatbot. Alternative solutions such as exploring other hosting platforms need to be explored to make the chatbot accessible to users.
 - Some python libraries used in the application rely on local execution and do not work when accessed online. Consideration should be given to finding alternatives or adapting the code to ensure seamless execution in different environments.
 
 ## Potential Enhancements for the Future
