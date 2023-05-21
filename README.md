@@ -12,7 +12,7 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
    - index.html (Frontend masterpiece)
    - styles.css (Aesthetically pleasing touch)
    - script.js (Interactive wizardry)
-- Displayed on the GitHub web platform (TBC as we might be using other platforms)
+- Displayed on the PythonAnywhere web platform
 
 ## Features
 - **Interactive Chat:** Engage with Quantron through text-based communication using specific keywords and phrases. Quantron responds with sarcastic pre-scripted messages based on the recognised input. Please note that the responses are limited to the predetermined set of keywords and phrases.
@@ -26,7 +26,7 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
 - **Calculations:** Quantron can perform simple arithmetic for you.
 
 ## Accessing Quantron (BETA)
-To access Quantron, simply visit the following website: https://sheng254.github.io/quantron/ (TBC as we might be using other platforms)
+To access Quantron, simply visit the following website: (the link will be provided later)
 
 ## Known Issues
 - The front-end (index.html, script.js & styles.css) and back-end (app.py) components are currently experiencing connectivity issues. As a result, the current state of the application is limited to displaying the design without complete functionality.
