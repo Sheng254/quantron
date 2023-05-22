@@ -39,7 +39,7 @@ To access Quantron, simply visit the following website: (the link will be provid
 - 🤖 Quantron (Voice & Text): "The current time is 13:48:49"
 - 👤 User Input (Text): "show me the weather"
 - 🤖 Quantron (Voice & Text): "Here is what I found for weather"
-- 🤖 Quantron (Webpage): Opens a new tab in the web browser and navigates to https://www.google.com/search?q=weather, displaying the weather information for the user's location                             or a default location.  
+- 🤖 Quantron (Webpage): Opens a new tab in the web browser and navigates to https://www.google.com/search?q=weather, displaying the weather information for the user's location or a default location.  
 - 👤 User Input (Text): "what is 2000 + 3000 / 200 - 2"
 - 🤖 Quantron (Voice & Text): "The answer is 2013.0"
 - 👤 User Input (Text): "bye"
