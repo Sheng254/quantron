@@ -2,7 +2,7 @@
 
 ![Quantron](static/Quantron.jpg)
 
-Welcome to Quantron, your personal assistant powered by quantum technology! Quantron is designed to chat, assist you with various tasks and provide helpful information.
+Welcome to Quantron, your personal assistant powered by quantum technology! Quantron is designed to chat and assist you with various tasks.
 
 ## Project Description
 - A personal project developed by myself, unveiling a rudimentary web application featuring a mediocre chatbot
