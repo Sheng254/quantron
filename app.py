@@ -1,3 +1,4 @@
+from flask import Flask, render_template, request, jsonify
 import datetime
 import webbrowser
 import pyttsx3
@@ -5,41 +6,80 @@ import speech_recognition as sr
 from nltk.chat.util import Chat, reflections
 import sys
 import random
-from flask import Flask, request, jsonify, render_template
+
+app = Flask(__name__)
 
 
-class AIAssistant:
+@app.route('/')
+def home_route():
+    return render_template("index.html")
+
+@app.route('/static/styles.css')
+def styles_css_route():
+    return app.send_static_file('static/styles.css')
+
+@app.route('/static/script.js')
+def script_js_route():
+    return app.send_static_file('static/script.js')
+
+@app.route('/user-message', methods=['POST'])
+def handle_user_message_route():
+    message = request.json["message"]
+    # Process the user's message and generate a response
+    response = "Your message: " + message
+    return jsonify({"response": response})
+
+
+class Quantron:
     def __init__(self):
+        # Initialize the Flask app
+        self.app = app
+
         # Initialize the text-to-speech engine
         self.engine = pyttsx3.init()
         self.pairs = [
             [
                 r"hi|hello|hey|good morning|good afternoon|good evening|good evening|what's up|howdy|bonjour|hola|konnichiwa|namaste|niihau",
-                ["Well, well, well, look who we have here.", "Hello there, sunshine!", "Hiiya, champ!", "Greetings, earthling!", "Hi-diddly-ho, neighborino!", "Yo, yo, yo! What's up?", "Konnichiwa!", "Niihau"]
+                ["Well, well, well, look who we have here.", "Hello there, sunshine!", "Hiiya, champ!",
+                 "Greetings, earthling!", "Hi-diddly-ho, neighborino!", "Yo, yo, yo! What's up?", "Konnichiwa!",
+                 "Niihau"]
             ],
             [
                 r"who are you|(.*)(your name)|your name",
-                ["I respond better to Quantron, so please call me that.", "You can call me Quantron.", "While my name is technically Ava, Quantron is what I prefer to be called.", "Quantron is my alter ego, it's a pleasure to be called by that name."]
+                ["I respond better to Quantron, so please call me that.", "You can call me Quantron.",
+                 "While my name is technically Ava, Quantron is what I prefer to be called.",
+                 "Quantron is my alter ego, it's a pleasure to be called by that name."]
             ],
             [
                 r"how are you?",
-                ["Oh, just living the dream.", "Like a ray of sunshine on a cloudy day.", "Can't complain, but I will if you ask me again.", "I'm so fabulous, I'm considering starting my own fan club.", "I'm just thrilled to be here, as you can probably tell."]
+                ["Oh, just living the dream.", "Like a ray of sunshine on a cloudy day.",
+                 "Can't complain, but I will if you ask me again.",
+                 "I'm so fabulous, I'm considering starting my own fan club.",
+                 "I'm just thrilled to be here, as you can probably tell."]
             ],
             [
                 r"what (can|do) you (do|help with)\??",
-                ["I can help you with various tasks such as searching the web, checking the weather, setting reminders, and more. What can I help you with today?"]
+                [
+                    "I can help you with various tasks such as searching the web, checking the weather, setting reminders, and more. What can I help you with today?"]
             ],
             [
                 r"(.*) (good|great|awesome)",
-                ["Wow, I'm so happy I could burst into tears.", "Oh, my heart is positively bursting with excitement.", "That news just made my day... said no one ever.", "I'll try to contain my excitement.", "Oh boy, that's just the most fantastic thing I've ever heard... not."]
+                ["Wow, I'm so happy I could burst into tears.", "Oh, my heart is positively bursting with excitement.",
+                 "That news just made my day... said no one ever.", "I'll try to contain my excitement.",
+                 "Oh boy, that's just the most fantastic thing I've ever heard... not."]
             ],
             [
                 r"(.*) (bad|terrible|awful|sucks|noob|shit|stupid)",
-                ["No one cares", "That's a real dream come true.", "Oh, how delightful.", "That's just fantastic, isn't it?", "I can feel the excitement from here."]
+                ["No one cares", "That's a real dream come true.", "Oh, how delightful.",
+                 "That's just fantastic, isn't it?", "I can feel the excitement from here."]
             ],
             [
                 r"thank you|thanks",
-                ["Oh, no problem at all. I just live to serve.", "You're welcome. I'm glad I could waste my time for you.", "Anytime. I'm always here to be taken for granted.", "No, thank you! It's not like I have anything better to do with my time.", "Sure thing. I love doing things for people who never show any gratitude."]
+                ["Oh, no problem at all. I just live to serve.",
+                 "You're welcome. I'm glad I could waste my time for you.",
+                 "Anytime. I'm always here to be taken for granted.",
+                 "No, thank you! It's not like I have anything better to do with my time.",
+                 "Sure thing. I love doing things for people who never show any gratitude."]
             ],
             [
                 r"how old are you",
@@ -199,21 +239,13 @@ class AIAssistant:
                 sys.exit()
 
 
-# Flask app block starts here
-app = Flask(__name__)
-assistant = AIAssistant()
+    def run(self):
+        self.app.run()
 
-# Flask routes and endpoints go here
-@app.route("/",methods=['GET', 'POST'])
-def index():
-    if request.method == "POST":
-        userPrompt = request.json['message']
-        assistant.chat(userPrompt)
-    else:
-        return render_template("index.html")
 
+assistant = Quantron()
 
 
 
 if __name__ == '__main__':
-    app.run()
+    assistant.app.run(port=5001)  # Change the port to a different value if needed
