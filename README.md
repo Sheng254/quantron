@@ -58,7 +58,7 @@ To access Quantron, simply visit the following website: (the link will be provid
 - 🤖 Quantron (Text): "Would you like to start over? (yes/no):
 - 👤 User Input (Text): "no"
 - 🤖 Quantron (Text): "Farewell, I'll cherish this conversation for the rest of my life. Not."
-- 🤖 Quantron: Quits the program and ends the conversation 
+- 🤖 Quantron: Terminates the program gracefully, concluding the conversation
 
 ## Known Issues
 - The front-end (index.html, script.js & styles.css) and back-end (app.py) components are currently experiencing connectivity issues. As a result, the current state of the application is limited to displaying the design without complete functionality.
