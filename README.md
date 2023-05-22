@@ -26,7 +26,7 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
 - **Calculations:** Quantron can perform simple arithmetic for you.
 
 ## Accessing Quantron (BETA)
-To access Quantron, simply visit the following website: (the link will be provided later)
+To access Quantron, simply visit the following website: http://sheng254.pythonanywhere.com
 
 ## Usage Examples 
 - 🤖 Quantron (Text): "How would you like to interact? (speak/type):"
