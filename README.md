@@ -52,7 +52,7 @@ To access Quantron, simply visit the following website: (the link will be provid
 - 🤖 Quantron (Webpage): Opens a new tab in the web browser and search 'best restaurant in New York'
 - 👤 User Input (Voice): "thank you"
 - 🤖 Quantron (Voice & Text): "Oh, no problem at all. I just live to serve"
-- 👤 User Input (Voice): "walao leh, what talking you?"
+- 👤 User Input (Voice): "what talking you?"
 - 🤖 Quantron (Voice & Text): "I'm sorry, I didn't quite understand what you meant. Could you please rephrase yourself?"
 - 👤 User Input (Text): "bye"
 - 🤖 Quantron (Text): "Would you like to start over? (yes/no):
