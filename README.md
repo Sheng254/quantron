@@ -52,11 +52,13 @@ To access Quantron, simply visit the following website: (the link will be provid
 - 🤖 Quantron (Webpage): Opens a new tab in the web browser and search 'best restaurant in New York'
 - 👤 User Input (Voice): "thank you"
 - 🤖 Quantron (Voice & Text): "Oh, no problem at all. I just live to serve"
+- 👤 User Input (Voice): "walao leh, what talking you?"
+- 🤖 Quantron (Voice & Text): "I'm sorry, I didn't quite understand what you meant. Could you please rephrase yourself?"
 - 👤 User Input (Text): "bye"
 - 🤖 Quantron (Text): "Would you like to start over? (yes/no):
 - 👤 User Input (Text): "no"
 - 🤖 Quantron (Text): "Farewell, I'll cherish this conversation for the rest of my life. Not."
-Conversation ended
+- 🤖 Quantron: Quits the program and the conversation ended
 
 ## Known Issues
 - The front-end (index.html, script.js & styles.css) and back-end (app.py) components are currently experiencing connectivity issues. As a result, the current state of the application is limited to displaying the design without complete functionality.
