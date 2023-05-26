@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import datetime
 import webbrowser
-import pyttsx3
-import speech_recognition as sr
 from nltk.chat.util import Chat, reflections
 import sys
 import random
@@ -12,7 +10,10 @@ class Quantron:
     def __init__(self):
         # Initialize the Flask app
         self.app = Flask(__name__)
-        self.engine = pyttsx3.init()
+
+        #Flask settings
+        self.app.config["TEMPLATES_AUTO_RELOAD"] = True
+
         self.pairs = [
             [
                 r"hi|hello|hey|good morning|good afternoon|good evening|good evening|what's up|howdy|bonjour|hola|konnichiwa|namaste|niihau",
@@ -86,34 +87,11 @@ class Quantron:
     def index(self):
         if request.method == "POST":
             userPrompt = request.json['message']
+            print(userPrompt)
             # Do something with userPrompt, e.g., process the input
-            return jsonify({'response': 'Received message: ' + userPrompt})
+            return self.chat(userPrompt)
         else:
             return render_template("index.html")
-
-    def speak(self, text):
-        print(text)
-        self.engine.say(text)
-        self.engine.runAndWait()
-
-    def speech_to_text(self):
-        r = sr.Recognizer()
-        text = ""
-        try:
-            with sr.Microphone() as source:
-                print("Listening...")
-                audio = r.listen(source)
-            print("Processing...")
-            text = r.recognize_google(audio)
-            print("You said:", text)  # Print the recognized text
-        except sr.UnknownValueError:
-            print("Sorry, I couldn't understand you.")
-        except sr.RequestError:
-            print("Sorry, I'm having trouble accessing the speech recognition service.")
-        except KeyboardInterrupt:
-            print("Speech recognition interrupted.")
-
-        return text
 
     def get_time(self):
         now = datetime.datetime.now().strftime('%H:%M:%S')
@@ -123,31 +101,34 @@ class Quantron:
     def chat(self, command):
         # Check if the user wants to exit
         if command.lower() == "bye":
-            return "bye"
+            self.handle_exit()
         try:
             # Check current time
             if 'time' in command:
                 response = self.get_time()
             # Check the weather
             elif 'weather' in command:
-                webbrowser.open('https://www.google.com/search?q=weather')
-                response = 'Here is what I found for weather'
+                response = 'TODO: add later'
             # Search the web
             elif "search" in command:
-                search_term = command.split("search")[-1]
-                webbrowser.open('https://www.google.com/search?q=' + search_term)
-                response = 'Here is what I found for ' + search_term
+                searchTerm = command.split("search")[-1]
+                searchLink = 'https://www.google.com/search?q=' + searchTerm
+                response = f"<a href='{searchLink}'> Search results on : {searchTerm} </a>"
             # Open a specific website
             elif 'open' in command:
                 website = command.split('open ')[-1]
-                if website == 'YouTube':
-                    webbrowser.open('https://www.youtube.com/')
-                    response = 'Opening YouTube...'
-                elif website == 'Google':
-                    webbrowser.open('https://www.google.com/')
-                    response = 'Opening Google...'
+                if website.lower() == 'youtube':
+                    response = f"<a href='https://www.youtube.com/'> Youtube </a>"
+                elif website.lower() == 'google':
+                    response = f"<a href='https://www.google.com'> Google </a>"
                 else:
                     response = f'Sorry, I don\'t know how to open {website}.'
+            # Play music
+            elif 'play' in command and 'music' in command:
+                genre = command.split('play')[-1].strip()
+                playLink = ('https://www.youtube.com/results?search_query=' + genre)
+                response =  f"<a href='{playLink}'> Playing {genre} </a>"
+
             # Make a calculation
             elif 'what is' in command:
                 expression = command.split('what is ')[-1]
@@ -162,67 +143,26 @@ class Quantron:
                     response = f"The answer is {result}"
                 except Exception as e:
                     response = "Sorry, I couldn't calculate that."
-            # Play music
-            elif 'play' in command and 'music' in command:
-                genre = command.split('play')[-1].strip()
-                webbrowser.open('https://www.youtube.com/results?search_query=' + genre)
-                response = "Playing" + genre
+
             # Use chatbot to generate response
             else:
                 response = self.chatbot.respond(command)
         except Exception as e:
-            print("I'm sorry, I didn't quite understand what you meant. Could you please rephrase your question?")
-            print(f"Error: {str(e)}")
-            return "continue"  # Indicate that the conversation should continue
+            print(e)
+            return "I'm sorry, I didn't quite understand what you meant. Could you please rephrase your question?"  # Indicate that the conversation should continue
 
         print(response)
-        self.engine.say(response)
-        self.engine.runAndWait()
-        return "continue"
+        return response
 
-    def start(self):
-        print("How would you like to interact? (speak/type): ")
-        input_method = input().lower()
-
-        if input_method == "speak":
-            self.chat_with_speaking()
-        elif input_method == "type":
-            self.chat_with_typing()
-        else:
-            print("Invalid input. Please try again.")
-            self.start()
-
-    def handle_conversation(self, input_function):
-        while True:
-            command = input_function("You: ")
-            if command.lower() == "bye":
-                self.handle_exit()
-                break
-            result = self.chat(command)
-            if result == "start_over":
-                self.handle_exit(start_over_prompt=False)
-                break
-
-    def chat_with_speaking(self):
-        self.handle_conversation(lambda prompt: self.speech_to_text())
-
-    def chat_with_typing(self):
-        self.handle_conversation(input)
-
-    def handle_exit(self, start_over_prompt=True):
-        if start_over_prompt:
-            restart = input("Would you like to start over? (yes/no): ")
-            if restart.lower() == "yes":
-                self.start()
-            else:
+    def handle_exit(self):
                 farewell_messages = [
                     "Oh no, please don't go. I'll miss your fascinating conversation.",
                     "Farewell, I'll cherish this conversation for the rest of my life. Not.",
                     "Goodbye, I'll try to go on without you. Somehow.",
                     "I won't miss you"
                 ]
-                print(random.choice(farewell_messages))
-                sys.exit()
+                farewell_message = (random.choice(farewell_messages))
+                return farewell_message
 
     def run(self):
         self.app.run(port=5002)
