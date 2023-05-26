@@ -2,6 +2,7 @@
 const chatlog = document.getElementById('chatlog');
 const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
+const micButton = document.getElementById('micButton');
 
 // Event listener for send button click
 sendButton.addEventListener('click', handleUserInput);
@@ -12,6 +13,9 @@ userInput.addEventListener('keyup', function (event) {
         handleUserInput();
     }
 });
+
+// Event listener for mic button click
+micButton.addEventListener('click', handleMicButtonClick);
 
 // Function to handle user input
 function handleUserInput() {
@@ -25,6 +29,25 @@ function handleUserInput() {
         userInput.value = '';
     }
 }
+
+// Function to handle mic button click
+function handleMicButtonClick() {
+    // Request speech input from the user
+    recognition.start();
+}
+
+// Create a SpeechRecognition object
+const recognition = new webkitSpeechRecognition();
+recognition.continuous = false;
+recognition.interimResults = false;
+recognition.lang = 'en-US';
+
+// Event listener for speech recognition result
+recognition.onresult = function (event) {
+    const transcript = event.results[0][0].transcript;
+    displayUserMessage(transcript);
+    sendUserMessageToServer(transcript);
+};
 
 // Function to display user message in the chat log
 function displayUserMessage(message) {
