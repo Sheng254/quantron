@@ -7,35 +7,11 @@ from nltk.chat.util import Chat, reflections
 import sys
 import random
 
-app = Flask(__name__)
-
-
-@app.route('/')
-def home_route():
-    return render_template("index.html")
-
-@app.route('/static/styles.css')
-def styles_css_route():
-    return app.send_static_file('static/styles.css')
-
-@app.route('/static/script.js')
-def script_js_route():
-    return app.send_static_file('static/script.js')
-
-@app.route('/user-message', methods=['POST'])
-def handle_user_message_route():
-    message = request.json["message"]
-    # Process the user's message and generate a response
-    response = "Your message: " + message
-    return jsonify({"response": response})
-
 
 class Quantron:
     def __init__(self):
         # Initialize the Flask app
-        self.app = app
-
-        # Initialize the text-to-speech engine
+        self.app = Flask(__name__)
         self.engine = pyttsx3.init()
         self.pairs = [
             [
@@ -104,6 +80,16 @@ class Quantron:
         ]
         # Initialize the chatbot
         self.chatbot = Chat(self.pairs, reflections)
+        # Register the route for the index page
+        self.app.route("/", methods=['GET', 'POST'])(self.index)
+
+    def index(self):
+        if request.method == "POST":
+            userPrompt = request.json['message']
+            # Do something with userPrompt, e.g., process the input
+            return jsonify({'response': 'Received message: ' + userPrompt})
+        else:
+            return render_template("index.html")
 
     def speak(self, text):
         print(text)
@@ -238,14 +224,10 @@ class Quantron:
                 print(random.choice(farewell_messages))
                 sys.exit()
 
-
     def run(self):
-        self.app.run()
-
-
-assistant = Quantron()
-
+        self.app.run(port=5002)
 
 
 if __name__ == '__main__':
-    assistant.app.run(port=5001)  # Change the port to a different value if needed
+    assistant = Quantron()
+    assistant.run()
