@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import datetime
 import webbrowser
-import pyttsx3
-import speech_recognition as sr
 from nltk.chat.util import Chat, reflections
 import sys
 import random
@@ -12,7 +10,10 @@ class Quantron:
     def __init__(self):
         # Initialize the Flask app
         self.app = Flask(__name__)
-        self.engine = pyttsx3.init()
+
+        #Flask settings
+        self.app.config["TEMPLATES_AUTO_RELOAD"] = True
+
         self.pairs = [
             [
                 r"hi|hello|hey|good morning|good afternoon|good evening|good evening|what's up|howdy|bonjour|hola|konnichiwa|namaste|niihau",
@@ -91,29 +92,6 @@ class Quantron:
         else:
             return render_template("index.html")
 
-    def speak(self, text):
-        print(text)
-        self.engine.say(text)
-        self.engine.runAndWait()
-
-    def speech_to_text(self):
-        r = sr.Recognizer()
-        text = ""
-        try:
-            with sr.Microphone() as source:
-                print("Listening...")
-                audio = r.listen(source)
-            print("Processing...")
-            text = r.recognize_google(audio)
-            print("You said:", text)  # Print the recognized text
-        except sr.UnknownValueError:
-            print("Sorry, I couldn't understand you.")
-        except sr.RequestError:
-            print("Sorry, I'm having trouble accessing the speech recognition service.")
-        except KeyboardInterrupt:
-            print("Speech recognition interrupted.")
-
-        return text
 
     def get_time(self):
         now = datetime.datetime.now().strftime('%H:%M:%S')
@@ -179,35 +157,6 @@ class Quantron:
         self.engine.say(response)
         self.engine.runAndWait()
         return "continue"
-
-    def start(self):
-        print("How would you like to interact? (speak/type): ")
-        input_method = input().lower()
-
-        if input_method == "speak":
-            self.chat_with_speaking()
-        elif input_method == "type":
-            self.chat_with_typing()
-        else:
-            print("Invalid input. Please try again.")
-            self.start()
-
-    def handle_conversation(self, input_function):
-        while True:
-            command = input_function("You: ")
-            if command.lower() == "bye":
-                self.handle_exit()
-                break
-            result = self.chat(command)
-            if result == "start_over":
-                self.handle_exit(start_over_prompt=False)
-                break
-
-    def chat_with_speaking(self):
-        self.handle_conversation(lambda prompt: self.speech_to_text())
-
-    def chat_with_typing(self):
-        self.handle_conversation(input)
 
     def handle_exit(self, start_over_prompt=True):
         if start_over_prompt:
