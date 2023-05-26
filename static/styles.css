@@ -112,3 +112,11 @@ body {
   background-color: #22c55e;
   color: #fff;
 }
+
+.user-message{
+  color:red;
+}
+
+.bot-message{
+  color:green;
+}

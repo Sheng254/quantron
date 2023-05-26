@@ -87,11 +87,11 @@ class Quantron:
     def index(self):
         if request.method == "POST":
             userPrompt = request.json['message']
+            print(userPrompt)
             # Do something with userPrompt, e.g., process the input
-            return jsonify({'response': 'Received message: ' + userPrompt})
+            return self.chat(userPrompt)
         else:
             return render_template("index.html")
-
 
     def get_time(self):
         now = datetime.datetime.now().strftime('%H:%M:%S')
@@ -101,31 +101,34 @@ class Quantron:
     def chat(self, command):
         # Check if the user wants to exit
         if command.lower() == "bye":
-            return "bye"
+            self.handle_exit()
         try:
             # Check current time
             if 'time' in command:
                 response = self.get_time()
             # Check the weather
             elif 'weather' in command:
-                webbrowser.open('https://www.google.com/search?q=weather')
-                response = 'Here is what I found for weather'
+                response = 'TODO: add later'
             # Search the web
             elif "search" in command:
-                search_term = command.split("search")[-1]
-                webbrowser.open('https://www.google.com/search?q=' + search_term)
-                response = 'Here is what I found for ' + search_term
+                searchTerm = command.split("search")[-1]
+                searchLink = 'https://www.google.com/search?q=' + searchTerm
+                response = f"<a href='{searchLink}'> Search results on : {searchTerm} </a>"
             # Open a specific website
             elif 'open' in command:
                 website = command.split('open ')[-1]
-                if website == 'YouTube':
-                    webbrowser.open('https://www.youtube.com/')
-                    response = 'Opening YouTube...'
-                elif website == 'Google':
-                    webbrowser.open('https://www.google.com/')
-                    response = 'Opening Google...'
+                if website.lower() == 'youtube':
+                    response = f"<a href='https://www.youtube.com/'> Youtube </a>"
+                elif website.lower() == 'google':
+                    response = f"<a href='https://www.google.com'> Google </a>"
                 else:
                     response = f'Sorry, I don\'t know how to open {website}.'
+            # Play music
+            elif 'play' in command and 'music' in command:
+                genre = command.split('play')[-1].strip()
+                playLink = ('https://www.youtube.com/results?search_query=' + genre)
+                response =  f"<a href='{playLink}'> Playing {genre} </a>"
+
             # Make a calculation
             elif 'what is' in command:
                 expression = command.split('what is ')[-1]
@@ -140,38 +143,26 @@ class Quantron:
                     response = f"The answer is {result}"
                 except Exception as e:
                     response = "Sorry, I couldn't calculate that."
-            # Play music
-            elif 'play' in command and 'music' in command:
-                genre = command.split('play')[-1].strip()
-                webbrowser.open('https://www.youtube.com/results?search_query=' + genre)
-                response = "Playing" + genre
+
             # Use chatbot to generate response
             else:
                 response = self.chatbot.respond(command)
         except Exception as e:
-            print("I'm sorry, I didn't quite understand what you meant. Could you please rephrase your question?")
-            print(f"Error: {str(e)}")
-            return "continue"  # Indicate that the conversation should continue
+            print(e)
+            return "I'm sorry, I didn't quite understand what you meant. Could you please rephrase your question?"  # Indicate that the conversation should continue
 
         print(response)
-        self.engine.say(response)
-        self.engine.runAndWait()
-        return "continue"
+        return response
 
-    def handle_exit(self, start_over_prompt=True):
-        if start_over_prompt:
-            restart = input("Would you like to start over? (yes/no): ")
-            if restart.lower() == "yes":
-                self.start()
-            else:
+    def handle_exit(self):
                 farewell_messages = [
                     "Oh no, please don't go. I'll miss your fascinating conversation.",
                     "Farewell, I'll cherish this conversation for the rest of my life. Not.",
                     "Goodbye, I'll try to go on without you. Somehow.",
                     "I won't miss you"
                 ]
-                print(random.choice(farewell_messages))
-                sys.exit()
+                farewell_message = (random.choice(farewell_messages))
+                return farewell_message
 
     def run(self):
         self.app.run(port=5002)

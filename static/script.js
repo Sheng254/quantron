@@ -30,7 +30,7 @@ function handleUserInput() {
 function displayUserMessage(message) {
     const userMessageElement = document.createElement('div');
     userMessageElement.classList.add('user-message');
-    userMessageElement.innerText = message;
+    userMessageElement.innerText = "🤔 : " + message;
     chatlog.appendChild(userMessageElement);
 }
 
@@ -38,7 +38,7 @@ function displayUserMessage(message) {
 function displayBotMessage(message) {
     const botMessageElement = document.createElement('div');
     botMessageElement.classList.add('bot-message');
-    botMessageElement.innerText = message;
+    botMessageElement.innerHTML = "🤖 : " + message;
     chatlog.appendChild(botMessageElement);
 }
 
