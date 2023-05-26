@@ -61,9 +61,7 @@ To access Quantron, simply visit the following website: http://sheng254.pythonan
 - 🤖 Quantron: Terminates the program gracefully, concluding the conversation
 
 ## Known Issues
-- The front-end (index.html, script.js & styles.css) and back-end (app.py) components are currently experiencing connectivity issues. As a result, the current state of the application is limited to displaying the design without complete functionality.
-- The chat room functionality is still a work in progress and may not be as comprehensive as popular messaging platforms like WhatsApp or Telegram. 
-- At the moment, there is no implemented button or feature for voice interaction with Quantron. 
+- Currently, not all features of Quantron are available.
 - Some python libraries used in the application rely on local execution and do not work when accessed online. Consideration should be given to finding alternatives or adapting the code to ensure seamless execution in different environments.
 
 ## Potential Enhancements for the Future
