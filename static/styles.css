@@ -95,6 +95,15 @@ body {
   cursor: pointer;
 }
 
+.user-input-container button#micButton {
+  background-color: #22c55e;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .chatlog .message {
   margin-bottom: 1rem;
 }
@@ -113,10 +122,10 @@ body {
   color: #fff;
 }
 
-.user-message{
-  color:red;
+.user-message {
+  color: red;
 }
 
-.bot-message{
-  color:green;
+.bot-message {
+  color: green;
 }
