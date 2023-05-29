@@ -15,57 +15,47 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
 - Displayed on the PythonAnywhere web platform
 
 ## Features
+- **Type Interaction:** Simply type in the chat box and click the "Send" button to communicate with Quantron.
 - **Interactive Chat:** Engage with Quantron through text-based communication using specific keywords and phrases. Quantron responds with sarcastic pre-scripted messages based on the recognised input. Please note that the responses are limited to the predetermined set of keywords and phrases.
-- **Type Interaction:** Simply type in the chat box and click the "Send" button to communicate with Quantron. This allows for text-based communication and is useful in situations where speech interaction may not be feasible.
-- **Voice Interaction:** Speak to Quantron using voice input for a more natural interaction. 
-- **Time Information:** Ask Quantron for the current time.
-- **Weather Information:** Quantron will lead you to the latest weather updates via Google.
-- **Open Websites:** Ask Quantron to open specific websites like YouTube or Google.
-- **Web Search:** Quantron can perform google searches for you.
-- **Music Playback:** Request Quantron to perform a YouTube search and enjoy playing the music yourself.
+- **Random Quotes:** Get random quotes from famous personalities to inspire and motivate you.
+- **Random Jokes:** Enjoy a good laugh with Quantron's collection of random jokes.
+- **Translation:** Quantron can translate text to different languages using the Google Translate API.
+- **Gender Prediction:** Predict the gender of a given name using the Genderize API.
+- **Nationality Prediction:** Predict the nationality associated with a given name using the Nationalize API.
+- **Suggest Random Activity:** Suggest random activities to help you find something interesting to do.
 - **Calculations:** Quantron can perform simple arithmetic for you.
 
 ## Accessing Quantron (BETA)
 To access Quantron, simply visit the following website: http://sheng254.pythonanywhere.com
 
 ## Usage Examples 
-- 🤖 Quantron (Text): "How would you like to interact? (speak/type):"
-- 🤔 User Input (Text): "type" 
-- 🤔 User Input (Text): "how are you?"
-- 🤖 Quantron (Voice & Text): "I'm so fabulous, I'm considering starting my own fan club."
-- 🤔 User Input (Text): "what can you do?"
-- 🤖 Quantron (Voice & Text): "I can help you with various tasks such as searching the web, checking the weather, setting reminders, and more. What can I help you with today?"
-- 🤔 User Input (Text): "what time is it?"
-- 🤖 Quantron (Voice & Text): "The current time is 13:48:49"
-- 🤔 User Input (Text): "show me the weather"
-- 🤖 Quantron (Voice & Text): "Here is what I found for weather"
-- 🤖 Quantron (Webpage): Opens a new tab in the web browser and navigates to https://www.google.com/search?q=weather, displaying the weather information for the user's location or a default location.  
-- 🤔 User Input (Text): "what is 2000 + 3000 / 200 - 2"
-- 🤖 Quantron (Voice & Text): "The answer is 2013.0"
-- 🤔 User Input (Text): "bye"
-- 🤖 Quantron (Text): "Would you like to start over? (yes/no):
-- 🤔 User Input (Text): "yes"
-- 🤖 Quantron (Text): "How would you like to interact? (speak/type):"
-- 🤔 User Input (Text): "speak" 
-- 🤔 User Input (Voice): "search best restaurant in New York"
-- 🤖 Quantron (Voice & Text): "Here is what I found for best restaurant in New York"
-- 🤖 Quantron (Webpage): Opens a new tab in the web browser and search 'best restaurant in New York'
-- 🤔 User Input (Voice): "thank you"
-- 🤖 Quantron (Voice & Text): "Oh, no problem at all. I just live to serve"
-- 🤔 User Input (Voice): "what talking you?"
-- 🤖 Quantron (Voice & Text): "I'm sorry, I didn't quite understand what you meant. Could you please rephrase yourself?"
-- 🤔 User Input (Text): "bye"
-- 🤖 Quantron (Text): "Would you like to start over? (yes/no):
-- 🤔 User Input (Text): "no"
-- 🤖 Quantron (Text): "Farewell, I'll cherish this conversation for the rest of my life. Not."
-- 🤖 Quantron: Terminates the program gracefully, concluding the conversation
-
-## Known Issues
-- Currently, not all features of Quantron are available.
-- Some python libraries used in the application rely on local execution and do not work when accessed online. Consideration should be given to finding alternatives or adapting the code to ensure seamless execution in different environments.
+- 🤔: how are you?
+- 🤖: I'm so fabulous, I'm considering starting my own fan club.
+- 🤔: what can you do?
+- 🤖: I can can engage in conversation, provide random quotes, jokes, translations, predict gender and nationality, suggest random activities, perform calculations, and generate responses using predefined patterns.. What can I help you with today?
+- 🤔: suggest me an activity
+- 🤖: Here's a random activity suggestion: Write a handwritten letter to somebody
+- 🤔: translate im going back to Chinese (simplified)
+- 🤖: The translation of 'im going back' to chinese (simplified) is: '我要回去了'
+- 🤔: tell me a joke
+- 🤖: Why did the cat sit on the computer? Because it wanted to keep an eye on the mouse. Clever, right?
+- 🤔: what is 2000 + 3000 / 200 - 2
+- 🤖: The answer is 2013.0
+- 🤔 : I need a good quote to improve my mood
+- 🤖 : The journey of a thousand miles begins with a single step. - Lao Tzu
+- 🤔 : nationality jesse
+- 🤖 : The predicted nationality of jesse is FI with a probability of 0.168
+- 🤔 : gender hayley
+- 🤖 : The predicted gender of hayley is female with a probability of 1.0
+- 🤔: thank you
+- 🤖: Oh, no problem at all. I just live to serve
+- 🤔: what talking you?
+- 🤖: I'm sorry, I didn't quite understand what you meant. Could you please rephrase yourself?
+- 🤔: bye
+- 🤖: Farewell, I'll cherish this conversation for the rest of my life. Not.
 
 ## Potential Enhancements for the Future
-- Enhance the voice interaction feature for better accuracy and usability.
+- Include the voice interaction feature.
 - Add more features and capabilities to Quantron based on user feedback.
 - Ameliorate user-friendliness and interactivity by improving the overall design aesthetics.
 - Integrate machine learning (ML) and deep learning (DL) algorithms to enable more precise and targeted responses.
