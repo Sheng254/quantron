@@ -25,7 +25,7 @@ Welcome to Quantron, your personal assistant powered by quantum technology! Quan
 - **Suggest Random Activity:** Suggest random activities to help you find something interesting to do.
 - **Calculations:** Quantron can perform simple arithmetic for you.
 
-## Accessing Quantron (BETA)
+## Accessing Quantron
 To access Quantron, simply visit the following website: http://sheng254.pythonanywhere.com
 
 ## Usage Examples 
