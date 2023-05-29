@@ -228,16 +228,6 @@ class Quantron:
         print(response)
         return response
 
-    def handle_exit(self):
-                farewell_messages = [
-                    "Oh no, please don't go. I'll miss your fascinating conversation.",
-                    "Farewell, I'll cherish this conversation for the rest of my life. Not.",
-                    "Goodbye, I'll try to go on without you. Somehow.",
-                    "I won't miss you"
-                ]
-                farewell_message = (random.choice(farewell_messages))
-                return farewell_message
-
     def run(self):
         self.app.run(port=5002)
 
@@ -245,3 +235,4 @@ class Quantron:
 if __name__ == '__main__':
     assistant = Quantron()
     assistant.run()
+
