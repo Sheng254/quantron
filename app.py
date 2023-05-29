@@ -1,25 +1,29 @@
 from flask import Flask, render_template, request, jsonify
-import datetime
-import webbrowser
 from nltk.chat.util import Chat, reflections
-import sys
 import random
+from googletrans import Translator
+import requests
 
 
 class Quantron:
     def __init__(self):
         # Initialize the Flask app
         self.app = Flask(__name__)
-
         #Flask settings
         self.app.config["TEMPLATES_AUTO_RELOAD"] = True
-
         self.pairs = [
             [
                 r"hi|hello|hey|good morning|good afternoon|good evening|good evening|what's up|howdy|bonjour|hola|konnichiwa|namaste|niihau",
                 ["Well, well, well, look who we have here.", "Hello there, sunshine!", "Hiiya, champ!",
                  "Greetings, earthling!", "Hi-diddly-ho, neighborino!", "Yo, yo, yo! What's up?", "Konnichiwa!",
                  "Niihau"]
+            ],
+            [
+                r"bye|see you|see you again",
+                ["Oh no, please don't go. I'll miss your fascinating conversation.",
+                "Farewell, I'll cherish this conversation for the rest of my life. Not.",
+                "Goodbye, I'll try to go on without you. Somehow.",
+                "I won't miss you"]
             ],
             [
                 r"who are you|(.*)(your name)|your name",
@@ -36,8 +40,7 @@ class Quantron:
             ],
             [
                 r"what (can|do) you (do|help with)\??",
-                [
-                    "I can help you with various tasks such as searching the web, checking the weather, setting reminders, and more. What can I help you with today?"]
+                ["I can can engage in conversation, provide random quotes, jokes, translations, predict gender and nationality, suggest random activities, perform calculations, and generate responses using predefined patterns.. What can I help you with today?"]
             ],
             [
                 r"(.*) (good|great|awesome)",
@@ -93,42 +96,115 @@ class Quantron:
         else:
             return render_template("index.html")
 
-    def get_time(self):
-        now = datetime.datetime.now().strftime('%H:%M:%S')
-        response = 'The current time is %s' % now
-        return response
+    def get_quote(self):
+        quotes = [
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "In the midst of chaos, there is also opportunity. - Sun Tzu",
+            "Believe you can and you're halfway there. - Theodore Roosevelt",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+            "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+            "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+            "The best way to predict the future is to create it. - Peter Drucker",
+            "You miss 100% of the shots you don't take. - Wayne Gretzky",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+            "The journey of a thousand miles begins with a single step. - Lao Tzu",
+        ]
+        return random.choice(quotes)
+
+    def get_joke(self):
+        jokes = [
+            "Why did the scarecrow win an award? Because he was outstanding in his field... of straw.",
+            "Why don't scientists trust atoms? Because they make up everything! Isn't that hilarious?",
+            "I'm reading a book about anti-gravity. It's impossible to put down... Well, not literally.",
+            "Why did the bicycle fall over? Because it was two-tired of standing up straight.",
+            "Why did the tomato turn red? Because it saw the salad dressing. Isn't that tomato-rrific?",
+            "Why don't skeletons fight each other? They don't have the guts... or muscles... or any other body parts.",
+            "Why did the math book look sad? Because it had too many problems. Poor book!",
+            "Why don't eggs tell jokes? Because they might crack up... Literally, they crack when you try to tell a joke.",
+            "Why did the golfer bring two pairs of pants? In case he got a hole in one! Get it? A hole in one...",
+            "Why did the chicken go to the seance? To talk to the other side... of the road.",
+            "Why did the cat sit on the computer? Because it wanted to keep an eye on the mouse. Clever, right?",
+            "Why don't scientists trust atoms? Because they make up everything! Classic science humor!",
+        ]
+        return random.choice(jokes)
+
+    def translate_text(self, text, target_language):
+        translator = Translator()
+        translation = translator.translate(text, dest=target_language)
+        return translation.text
+
+    def get_gender(self, name):
+        url = f"https://api.genderize.io?name={name}"
+        response = requests.get(url)
+        data = response.json()
+        gender = data.get('gender')
+        probability = data.get('probability')
+        if gender:
+            return f"The predicted gender of {name} is {gender} with a probability of {probability}"
+        else:
+            return f"Sorry, the gender of {name} could not be determined."
+
+    def get_nationality(self, name):
+        url = f"https://api.nationalize.io?name={name}"
+        response = requests.get(url)
+        data = response.json()
+        country_data = data.get('country')
+        if country_data:
+            country_id = country_data[0].get('country_id')
+            probability = country_data[0].get('probability')
+            return f"The predicted nationality of {name} is {country_id} with a probability of {probability}"
+        else:
+            return f"Sorry, the nationality of {name} could not be determined."
+
+    def get_random_activity(self):
+        url = "https://www.boredapi.com/api/activity"
+        response = requests.get(url)
+        data = response.json()
+        activity = data.get('activity')
+        if activity:
+            return f"Here's a random activity suggestion: {activity}"
+        else:
+            return "Sorry, I couldn't fetch a random activity at the moment."
 
     def chat(self, command):
-        # Check if the user wants to exit
-        if command.lower() == "bye":
-            self.handle_exit()
+        command = command.lower()
         try:
-            # Check current time
-            if 'time' in command:
-                response = self.get_time()
-            # Check the weather
-            elif 'weather' in command:
-                response = 'TODO: add later'
-            # Search the web
-            elif "search" in command:
-                searchTerm = command.split("search")[-1]
-                searchLink = 'https://www.google.com/search?q=' + searchTerm
-                response = f"<a href='{searchLink}'> Search results on : {searchTerm} </a>"
-            # Open a specific website
-            elif 'open' in command:
-                website = command.split('open ')[-1]
-                if website.lower() == 'youtube':
-                    response = f"<a href='https://www.youtube.com/'> Youtube </a>"
-                elif website.lower() == 'google':
-                    response = f"<a href='https://www.google.com'> Google </a>"
+            # Generate random quote
+            if 'quote' in command:
+                response = self.get_quote()
+            # Generate random joke
+            elif 'joke' in command:
+                response = self.get_joke()
+            # Do a translation
+            elif 'translate' in command:
+                # Let the command be in this format: "translate <text> to <language>"
+                parts = command.split("translate")
+                if len(parts) < 2:
+                    response = "Please provide the text and target language for translation."
                 else:
-                    response = f'Sorry, I don\'t know how to open {website}.'
-            # Play music
-            elif 'play' in command and 'music' in command:
-                genre = command.split('play')[-1].strip()
-                playLink = ('https://www.youtube.com/results?search_query=' + genre)
-                response =  f"<a href='{playLink}'> Playing {genre} </a>"
-
+                    text = parts[1].strip()
+                    if 'to' in text:
+                        text_parts = text.split("to")
+                        if len(text_parts) < 2:
+                            response = "Please provide the target language for translation."
+                        else:
+                            text = text_parts[0].strip()
+                            target_language = text_parts[1].strip()
+                            translation = self.translate_text(text, target_language)
+                            response = f"The translation of '{text}' to {target_language} is: '{translation}'"
+                    else:
+                        response = "Please provide the target language for translation."
+            # Predict gender
+            elif 'gender' in command:
+                name = command.split('gender')[-1].strip()
+                response = self.get_gender(name)
+            # Predict nationality
+            elif 'nationality' in command:
+                name = command.split('nationality')[-1].strip()
+                response = self.get_nationality(name)
+            # Generate random activity
+            elif 'activity' in command:
+                response = self.get_random_activity()
             # Make a calculation
             elif 'what is' in command:
                 expression = command.split('what is ')[-1]
@@ -143,13 +219,11 @@ class Quantron:
                     response = f"The answer is {result}"
                 except Exception as e:
                     response = "Sorry, I couldn't calculate that."
-
             # Use chatbot to generate response
             else:
                 response = self.chatbot.respond(command)
         except Exception as e:
-            print(e)
-            return "I'm sorry, I didn't quite understand what you meant. Could you please rephrase your question?"  # Indicate that the conversation should continue
+            response = "An error occurred while processing your request. Please try again."
 
         print(response)
         return response
