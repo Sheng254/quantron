@@ -2,7 +2,7 @@
 const chatlog = document.getElementById('chatlog');
 const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
-const micButton = document.getElementById('micButton');
+const clearButton = document.getElementById('clearButton');
 
 // Event listener for send button click
 sendButton.addEventListener('click', handleUserInput);
@@ -14,8 +14,8 @@ userInput.addEventListener('keyup', function (event) {
     }
 });
 
-// Event listener for mic button click
-micButton.addEventListener('click', handleMicButtonClick);
+// Event listener for clear button click
+clearButton.addEventListener('click', clearChat);
 
 // Function to handle user input
 function handleUserInput() {
@@ -30,30 +30,11 @@ function handleUserInput() {
     }
 }
 
-// Function to handle mic button click
-function handleMicButtonClick() {
-    // Request speech input from the user
-    recognition.start();
-}
-
-// Create a SpeechRecognition object
-const recognition = new webkitSpeechRecognition();
-recognition.continuous = false;
-recognition.interimResults = false;
-recognition.lang = 'en-US';
-
-// Event listener for speech recognition result
-recognition.onresult = function (event) {
-    const transcript = event.results[0][0].transcript;
-    displayUserMessage(transcript);
-    sendUserMessageToServer(transcript);
-};
-
 // Function to display user message in the chat log
 function displayUserMessage(message) {
     const userMessageElement = document.createElement('div');
     userMessageElement.classList.add('user-message');
-    userMessageElement.innerText = "🤔 : " + message;
+    userMessageElement.innerText = message;
     chatlog.appendChild(userMessageElement);
 }
 
@@ -61,7 +42,7 @@ function displayUserMessage(message) {
 function displayBotMessage(message) {
     const botMessageElement = document.createElement('div');
     botMessageElement.classList.add('bot-message');
-    botMessageElement.innerHTML = "🤖 : " + message;
+    botMessageElement.innerHTML = message;
     chatlog.appendChild(botMessageElement);
 }
 
@@ -83,3 +64,23 @@ function sendUserMessageToServer(message) {
         console.error('Error:', error);
     });
 }
+
+// Function to clear the chat history and restart the conversation
+function clearChat() {
+    // Remove all child nodes from the chatlog
+    while (chatlog.firstChild) {
+        chatlog.removeChild(chatlog.firstChild);
+    }
+
+    // Display the initial bot message again
+    const initialBotMessage = "Welcome to Quantron, your personal assistant!";
+    const instructionMessage = "To begin, type your messages in the chat. I'm here to assist you.";
+    displayBotMessage(initialBotMessage);
+    displayBotMessage(instructionMessage);
+}
+
+// Display the initial bot message
+const initialBotMessage = "Welcome to Quantron, your personal assistant!";
+const instructionMessage = "To begin, type your messages in the chat. I'm here to assist you.";
+displayBotMessage(initialBotMessage);
+displayBotMessage(instructionMessage);
