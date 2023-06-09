@@ -50,7 +50,7 @@ class Quantron:
             ],
             [
                 r"what (can|do) you (do|help with)\??|what are your capabilities\??|what services do you offer\??",
-                ["I can can engage in conversation, provide random quotes, jokes, translations, predict gender and nationality, suggest random activities, perform calculations, and generate responses using predefined patterns. What can I help you with today?"]
+                ["I can engage in conversation, provide random quotes, jokes, translations, predict gender and nationality, suggest random activities, perform calculations, and generate responses using predefined patterns. What can I help you with today?"]
             ],
             [
                 r"(.*)(good|great|awesome|excellent|fantastic|amazing|wonderful|superb|terrific|outstanding|phenomenal|splendid|brilliant|super|marvelous)(.*)",
@@ -214,20 +214,20 @@ class Quantron:
                 # Let the command be in this format: "translate <text> to <language>"
                 parts = command.split("translate")
                 if len(parts) < 2:
-                    response = "Please provide the text and target language for translation in the following format: 'translate <text> to <language>'"
+                    response = "Please provide the text and target language for translation in the following format: translate [text] to [language]"
                 else:
                     text = parts[1].strip()
                     if 'to' in text:
                         text_parts = text.split("to")
                         if len(text_parts) < 2:
-                            response = "Please provide the text and target language for translation in the following format: 'translate <text> to <language>'"
+                            response = "Please provide the text and target language for translation in the following format: translate [text] to [language]"
                         else:
                             text = text_parts[0].strip()
                             target_language = text_parts[1].strip()
                             translation = self.translate_text(text, target_language)
                             response = f"The translation of '{text}' to {target_language} is: '{translation}'"
                     else:
-                        response = "Please provide the text and target language for translation in the following format: 'translate <text> to <language>'"
+                        response = "Please provide the text and target language for translation in the following format: translate [text] to [language]"
             # Predict gender
             elif 'gender' in command:
                 name = command.split('gender')[-1].strip()
