@@ -5,7 +5,12 @@
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body>
-    <div class="container">
+    <div id="authentication">
+        <h1>🔑🔒🤖</h1>
+        <button id="yesButton">Unlocking Quantron's potential</button>
+        <button id="noButton">Coding Quantron's algorithms</button>
+    </div>
+    <div class="container" id="chatbotContainer" style="display: none;">
         <div class="chatbox">
             <div class="top-bar">
                 <div class="chatbot-name">
@@ -22,12 +27,62 @@
                 <button id="clearButton" class="clearButton">Reset</button>
                 <input type="text" id="userInput" placeholder="Type your message...">
                 <button type="submit" id="sendButton">Send</button>
-
             </div>
         </div>
     </div>
 
     <div id="userResponseContainer"></div>
+
+    <section id="aboutSection">
+        <h2>🎩 About</h2>
+        <p>Introducing Quantron, your very own personal assistant. Developed as a website application and a personal coding project, Quantron is designed to enhance your productivity and assist you with a wide range of tasks.</p>
+    </section>
+
+    <section id="faqSection">
+        <h2>❓Frequently Asked Questions</h2>
+        <ul>
+            <li>
+                <h3>• How can I get started with Quantron?</h3>
+                <p>To get started, simply type your message in the input field and press the "Send" button. Quantron will respond to your queries and assist you.</p>
+            </li>
+            <li>
+                <h3>• What services does Quantron provide?</h3>
+                <p>Quantron offers a versatile array of services to cater to your needs and interests. It can engage in conversation, provide random quotes, jokes, translations, predict gender and nationality, suggest random activities, perform calculations, and generate responses using predefined patterns.</p>
+            </li>
+            <li>
+                <h3>• Can you provide more information about the system behind Quantron's interactive chat feature?</h3>
+                <p>Quantron utilises text-based communication to engage with users. By using specific keywords and phrases, you can communicate with Quantron and receive pre-scripted responses tailored to the recognised input. Please note that the responses are limited to the predetermined set of keywords and phrases.</p>
+            </li>
+            <li>
+                <h3>• How can I generate random quotes?</h3>
+                <p>To receive random quotes, simply include the keyword "quote" in your message to Quantron.</p>
+            </li>
+            <li>
+                <h3>• How can I enjoy random jokes?</h3>
+                <p>To enjoy random jokes, include the keyword "joke" in your message to Quantron.</p>
+            </li>
+            <li>
+                <h3>• Can Quantron perform translations?</h3>
+                <p>Yes, Quantron can translate text to different languages using the Google Translate API. Use the format "translate &lt;text&gt; to &lt;language&gt;" for translation.</p>
+            </li>
+            <li>
+                <h3>• How can Quantron predict gender?</h3>
+                <p>Quantron can predict the gender associated with a given name. Use the keyword "gender &lt;name&gt;" in your message to get the prediction.</p>
+            </li>
+            <li>
+                <h3>• Can Quantron predict nationality?</h3>
+                <p>Yes, Quantron can predict the nationality associated with a given name. Use the keyword "nationality &lt;name&gt;" in your message to receive the prediction.</p>
+            </li>
+            <li>
+                <h3>• How can Quantron suggest random activities?</h3>
+                <p>To get random activity suggestions, include the keyword "activity" in your message to Quantron.</p>
+            </li>
+            <li>
+                <h3>• Can Quantron perform calculations?</h3>
+                <p>Yes, Quantron can perform simple arithmetic calculations. Use the keyword "calculate" followed by the mathematical expression in your message to obtain the result.</p>
+            </li>
+        </ul>
+    </section>
 
     <script src="/static/script.js"></script>
 </body>
