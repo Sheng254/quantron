@@ -148,6 +148,29 @@
   transform: scale(0.95);
 }
 
+#promptsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px;
+  align-content: flex-start;
+  justify-content: center;
+  height: 100%;
+}
+
+.message-text {
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  padding: 5px 10px; 
+  background-color: #f1f1f1;
+  border-radius: 10px; 
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 14px; 
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
 /* User and bot message styles */
 .user-message {
   color: #333;
