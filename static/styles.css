@@ -10,13 +10,13 @@
 
 #authentication h1 {
     color: #fff;
-    font-size: 24px;
+    font-size: 60px;
     margin-bottom: 1rem;
 }
 
 #yesButton, #noButton {
     padding: 0.75rem 1.5rem;
-    font-size: 16px;
+    font-size: 30px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
@@ -36,22 +36,12 @@
     box-shadow: 0 0 0 3px #22c55e;
 }
 
-/* Background styles */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #000;
-  background-image: linear-gradient(135deg, #aeecc0, #f1aab5);
-  overflow: hidden;
-}
 
 /* Chatbox styles */
 .chatbox {
-  max-width: 600px;
-  width: 100%;
-  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -73,13 +63,13 @@
 
 .chatbot-name {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
   margin: 0 auto;
 }
 
 .online-status {
   display: inline-block;
-  font-size: 14px;
+  font-size: 18px;
   padding: 0.25rem 0.5rem;
   border-radius: 50px;
   background-color: #ffffff;
@@ -90,15 +80,15 @@
 .online-status::before {
   content: "";
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background-color: #22c55e;
   margin-right: 5px;
 }
 
 .chatlog-container {
-  height: 450px;
+  flex-grow: 1;
   overflow-y: auto;
   padding: 1rem;
 }
@@ -107,6 +97,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: auto;
   padding: 1rem;
   background-color: #f9f9f9;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -119,7 +110,7 @@
   background-color: #fff;
   color: #333;
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   margin: 0 1rem;
   flex-grow: 1;
 }
@@ -129,7 +120,7 @@
   border: none;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
 }
@@ -166,10 +157,29 @@
   border-radius: 10px; 
   margin-bottom: 10px;
   color: #333;
-  font-size: 14px; 
+  font-size: 24px; 
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
+
+
+/* Styles for mobile */
+@media (max-width: 768px) {
+  .chatbox {
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .chatlog-container {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .user-input-container {
+    flex-shrink: 0;
+  }
+}
+
 
 /* User and bot message styles */
 .user-message {
@@ -183,6 +193,7 @@
   padding: 0.75rem;
   border-radius: 5px;
   margin-right: 10px;
+  font-size: 24px;
 }
 
 .bot-message {
@@ -196,6 +207,7 @@
   padding: 0.75rem;
   border-radius: 5px;
   margin-left: 10px;
+  font-size: 24px;
 }
 
 .user-message::after {
@@ -218,6 +230,7 @@
   font-size: 24px;
 }
 
+
 /* About Section */
 #aboutSection {
   margin: 2rem;
@@ -228,16 +241,17 @@
 }
 
 #aboutSection h2 {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 0.5rem;
   color: #333333;
 }
 
 #aboutSection p {
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 1rem;
-  color: #444444;
+  color: #555555;
 }
+
 
 /* FAQ Section */
 #faqSection {
@@ -249,22 +263,18 @@
 }
 
 #faqSection h2 {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 0.5rem;
   color: #333333;
 }
 
-#faqSection ul {
-  list-style: none;
-  padding: 0;
-}
-
 #faqSection li {
+  font-size: 20px;
   margin-bottom: 1rem;
 }
 
 #faqSection h3 {
-  font-size: 18px;
+  font-size: 24px;
   margin-bottom: 0.25rem;
-  color: #444444;
+  color: #555555;
 }
