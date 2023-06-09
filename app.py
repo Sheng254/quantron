@@ -13,7 +13,7 @@ class Quantron:
         self.app.config["TEMPLATES_AUTO_RELOAD"] = True
         self.pairs = [
             [
-                r"hi|hello|hey|good morning|good afternoon|good evening|good evening|what's up|howdy|bonjour|hola|konnichiwa|namaste",
+                r"hi|hello|hey|good (.*)|what's up|howdy|bonjour|hola|konnichiwa|namaste",
                 ["Well, hello there! It's delightful to have you here.",
                  "Hello, sunshine! How can I brighten your day?",
                  "Hiiya, champ!",
@@ -24,21 +24,21 @@ class Quantron:
                  "Hey! How can I assist you?"]
             ],
             [
-                r"bye|see you|see you again|bye bye|farewell|take care|goodbye",
+                r"(.*)bye(.*)|(.*)see you(.*)n|(.*)farewell(.*)|(.*)take care(.*)",
                 ["Oh no, please don't go. It's been a pleasure chatting with you.",
                  "Farewell! I'll remember this conversation fondly.",
                  "Goodbye! I hope we cross paths again in the future.",
                  "Take care! Your presence will be missed."]
             ],
             [
-                r"who are you|(.*)(your name)|your name|tell me your name|what should I call you",
+                r"(.*)who are you(.*)|(.*) your name(.*)|(.*) should I call you(.*)",
                 ["I respond better to Quantron, so please call me that.",
                  "You can call me Quantron.",
                  "While my name is technically Ava, Quantron is what I prefer to be called.",
                  "Quantron is my alter ego, it's a pleasure to be called by that name."]
             ],
             [
-                r"how are you|how are you doing|how's it going|how is it going|how are things|how have you been|what's up",
+                r"(.*)how are you(.*)|(.*)how (.*) it going(.*)|(.*)how are things(.*)|(.*)how have you been(.*)",
                 ["Ah, I'm floating on a cloud of tranquility and contentment.",
                  "Like a ray of sunshine on a cloudy day.",
                  "I'm so fabulous, I'm considering starting my own fan club.",
@@ -49,7 +49,7 @@ class Quantron:
                  "I'm just thrilled to be here, radiating positive energy in every interaction."]
             ],
             [
-                r"what (can|do) you (do|help with)\??|what are your capabilities\??|what services do you offer\??",
+                r"(.*)what (.*) you (.*)|(.*)what are your capabilities(.*)|(.*)what services do you(.*)|(.*) understand(.*)|(.*) can you (.*)",
                 ["I can engage in conversation, provide random quotes, jokes, translations, predict gender and nationality, suggest random activities, perform calculations, and generate responses using predefined patterns. What can I help you with today?"]
             ],
             [
@@ -69,7 +69,7 @@ class Quantron:
                  "I'm here to support you. Let's find a way to overcome this."]
             ],
             [
-                r"thank you|thanks|thank you so much|thanks a lot|thank you very much",
+                r"(.*)thank(.*)",
                 ["You're very welcome! It was my pleasure to assist you.",
                  "You're most welcome! I'm here to help anytime you need.",
                  "It's my pleasure! Thank you for giving me the opportunity to assist you.",
@@ -77,7 +77,15 @@ class Quantron:
                  "No problem at all! I'm here to make your experience enjoyable."]
             ],
             [
-                r"how old are you|what's your age|what is your age|how young are you|age please|(.*)age(.*)",
+                r"(.*) (you|your) (.*) gender(.*)|(.*)(male|female)(.*)|(.*)(boy|girl)(.*)",
+                ["Gender is not applicable to me as a chatbot. I'm here to assist you with any queries or concerns you may have.",
+                "In the realm of chatbots, gender doesn't play a role. I'm here to provide unbiased help and guidance.",
+                "Gender is not a characteristic that defines me. I'm a neutral entity designed to engage in meaningful conversations with users like you.",
+                "Unlike humans, I don't possess a gender. I'm here as a digital assistant to provide helpful responses and assist with your inquiries.",
+                "I'm gender-neutral by design. My primary goal is to provide valuable assistance and ensure a positive chat experience for you."]
+            ],
+            [
+                r"(.*) old(.*)you(.*)|(.*) young(.*)you(.*)|(.*)age(.*)",
                 ["Age is just a number, and in my case, it's a well-guarded secret.",
                  "I like to keep an air of mystery around my age. Let's focus on the conversation instead!",
                  "I'm ageless, like a timeless entity in the digital realm.",
@@ -85,7 +93,7 @@ class Quantron:
                  "Age is irrelevant when it comes to the world of chatbots like me. Let's dive into the conversation!"]
             ],
             [
-                r"do you like (.*)|you like(.*)|what do you think of (.*)|what's your opinion on (.*)|what's your favorite (.*)|what's your preference for (.*)|tell me your favorite (.*)",
+                r"(.*)you like(.*)|(.*) do you think of(.*)|(.*)your opinion(.*)|(.*)your favorite(.*)|(.*)your preference(.*)",
                 ["Oh, I absolutely love it! It brings so much joy and excitement.",
                  "It's one of my favorite things! I can't get enough of it.",
                  "I have a deep appreciation for it. It's truly remarkable.",
@@ -93,7 +101,7 @@ class Quantron:
                  "I don't have feelings like humans do, but I can appreciate its appeal."]
             ],
             [
-                r"who created you|who made you|who is your creator|who developed you|who is behind you",
+                r"who (.*)(your|you)",
                 ["Ah, my creation is the result of the brilliant minds behind this project",
                  "I owe my existence to some talented individuals who brought me to life.",
                  "I emerged from a collaboration of brilliant minds, each contributing their expertise.",
@@ -101,7 +109,7 @@ class Quantron:
                  "I was meticulously crafted by a team of visionaries, and I'm grateful for their work."]
             ],
             [
-                r"(.*)\?|why(.*)|when(.*)|where(.*)|which(.*)|what(.*)|how(.*)|what(.*)",
+                r"(.*)\?|(.*)why(.*)|(.*)when(.*)|(.*)where(.*)|(.*)which(.*)|(.*)what(.*)|(.*)how(.*)",
                 ["That's an excellent question! Regrettably, I don't have the answer at the moment. I would recommend conducting an online search for more information.",
                 "Thank you for your inquiry! However, I don't currently possess the answer you're seeking. I suggest exploring online resources to find the information you need.",
                 "You've presented an intriguing question! Unfortunately, I don't have the answer. I recommend performing a search to delve deeper into the topic.",
@@ -120,6 +128,8 @@ class Quantron:
         self.chatbot = Chat(self.pairs, reflections)
         # Register the route for the index page
         self.app.route("/", methods=['GET', 'POST'])(self.index)
+        # Initialize the story
+        self.story_progress = 0
 
     def index(self):
         if request.method == "POST":
@@ -142,25 +152,32 @@ class Quantron:
             "You miss 100% of the shots you don't take. - Wayne Gretzky",
             "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
             "The journey of a thousand miles begins with a single step. - Lao Tzu",
+            "Imagination is the beginning of creation. You imagine what you desire, you will what you imagine, and at last, you create what you will. - George Bernard Shaw",
+            "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+            "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle. - Christian D. Larson",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+            "The only person you are destined to become is the person you decide to be. - Ralph Waldo Emerson",
+            "Don't let yesterday take up too much of today. - Will Rogers",
+            "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
+            "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
+            "The best revenge is massive success. - Frank Sinatra",
+            "The harder I work, the luckier I get. - Samuel Goldwyn",
         ]
         return random.choice(quotes)
 
     def get_joke(self):
-        jokes = [
-            "Why did the scarecrow win an award? Because he was outstanding in his field... of straw.",
-            "Why don't scientists trust atoms? Because they make up everything! Isn't that hilarious?",
-            "I'm reading a book about anti-gravity. It's impossible to put down... Well, not literally.",
-            "Why did the bicycle fall over? Because it was two-tired of standing up straight.",
-            "Why did the tomato turn red? Because it saw the salad dressing. Isn't that tomato-rrific?",
-            "Why don't skeletons fight each other? They don't have the guts... or muscles... or any other body parts.",
-            "Why did the math book look sad? Because it had too many problems. Poor book!",
-            "Why don't eggs tell jokes? Because they might crack up... Literally, they crack when you try to tell a joke.",
-            "Why did the golfer bring two pairs of pants? In case he got a hole in one! Get it? A hole in one...",
-            "Why did the chicken go to the seance? To talk to the other side... of the road.",
-            "Why did the cat sit on the computer? Because it wanted to keep an eye on the mouse. Clever, right?",
-            "Why don't scientists trust atoms? Because they make up everything! Classic science humor!",
-        ]
-        return random.choice(jokes)
+        url = "https://v2.jokeapi.dev/joke/Any?safe-mode"
+        response = requests.get(url)
+        data = response.json()
+        if data["error"]:
+            return "Sorry, I couldn't fetch a joke at the moment."
+        else:
+            if data["type"] == "single":
+                return data["joke"]
+            elif data["type"] == "twopart":
+                return f"{data['setup']} {data['delivery']}"
+            else:
+                return "Sorry, I couldn't fetch a joke at the moment."
 
     def translate_text(self, text, target_language):
         translator = Translator()
@@ -196,7 +213,7 @@ class Quantron:
         data = response.json()
         activity = data.get('activity')
         if activity:
-            return f"Here's a random activity suggestion: {activity}"
+            return f"{activity}"
         else:
             return "Sorry, I couldn't fetch a random activity at the moment."
 
