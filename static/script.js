@@ -30,6 +30,44 @@ noButton.addEventListener('click', function() {
     document.body.appendChild(messageElement);
 });
 
+// Array of prompts
+const prompts = [
+    "How are you?",
+    "Tell me a quote",
+    "Tell me a joke",
+    "Translate how are you to malay",
+    "Gender Brandon",
+    "Nationality May",
+    "Suggest me an activity",
+    "Calculate 100/14894-320"
+];
+
+// Function to add prompts to the chat log
+function addPrompts() {
+    const promptsContainer = document.getElementById("promptsContainer");
+
+    prompts.forEach(function (promptText) {
+        const promptElement = document.createElement("div");
+        promptElement.classList.add("message-text");
+        promptElement.textContent = promptText;
+        promptElement.addEventListener("click", function () {
+            sendMessage(promptText); // Send the prompt as a user message
+            promptElement.classList.add("disabled"); // Optionally disable the prompt after clicking
+        });
+
+        promptsContainer.appendChild(promptElement);
+    });
+}
+
+// Function to send a message to the chatbot
+function sendMessage(message) {
+    displayUserMessage(message);
+    sendUserMessageToServer(message);
+}
+
+// Call the addPrompts function to populate the prompts
+addPrompts();
+
 // Event listener for send button click
 sendButton.addEventListener('click', handleUserInput);
 
