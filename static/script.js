@@ -26,7 +26,7 @@ noButton.addEventListener('click', function() {
     messageElement.style.color = 'white';
     messageElement.style.textAlign = 'center';
     messageElement.style.marginTop = '50vh';
-    messageElement.style.fontSize = '24px';
+    messageElement.style.fontSize = '30px';
     document.body.appendChild(messageElement);
 });
 
