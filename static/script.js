@@ -3,6 +3,32 @@ const chatlog = document.getElementById('chatlog');
 const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
 const clearButton = document.getElementById('clearButton');
+const authenticationSection = document.getElementById('authentication');
+const yesButton = document.getElementById('yesButton');
+const noButton = document.getElementById('noButton');
+const chatbotContainer = document.getElementById('chatbotContainer');
+
+// Event listener for "Yes" button click
+yesButton.addEventListener('click', function() {
+    authenticationSection.style.display = 'none';
+    chatbotContainer.style.display = 'block';
+});
+
+// Event listener for "No" button click
+noButton.addEventListener('click', function() {
+    // Clear the page content
+    document.body.innerHTML = '';
+    document.body.style.background = 'black';
+
+    // Create a new element for the message
+    var messageElement = document.createElement('div');
+    messageElement.innerText = `Apologies, access denied. Only individuals of the human kind are granted permission.\nKindly refresh the page and attempt to authenticate yourself again if you are a human user.`;
+    messageElement.style.color = 'white';
+    messageElement.style.textAlign = 'center';
+    messageElement.style.marginTop = '50vh';
+    messageElement.style.fontSize = '24px';
+    document.body.appendChild(messageElement);
+});
 
 // Event listener for send button click
 sendButton.addEventListener('click', handleUserInput);
@@ -73,14 +99,14 @@ function clearChat() {
     }
 
     // Display the initial bot message again
-    const initialBotMessage = "Welcome to Quantron, your personal assistant!";
-    const instructionMessage = "To begin, type your messages in the chat. I'm here to assist you.";
+    const initialBotMessage = "👋 Welcome to Quantron, your personal assistant! 🚀";
+    const instructionMessage = "💬 To begin, type your messages in the chat. I'm here to assist you. 🤝";
     displayBotMessage(initialBotMessage);
     displayBotMessage(instructionMessage);
 }
 
 // Display the initial bot message
-const initialBotMessage = "Welcome to Quantron, your personal assistant!";
-const instructionMessage = "To begin, type your messages in the chat. I'm here to assist you.";
+const initialBotMessage = "👋 Welcome to Quantron, your personal assistant! 🚀";
+const instructionMessage = "💬 To begin, type your messages in the chat. I'm here to assist you. 🤝";
 displayBotMessage(initialBotMessage);
 displayBotMessage(instructionMessage);
