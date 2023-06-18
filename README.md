@@ -1,8 +1,8 @@
 # Quantron - Personal Assistant
 
-![Quantron](static/Quantron.jpg)
+![Quantron](static/Quantron.png)
 
-Welcome to Quantron, your personal assistant powered by quantum technology! Quantron is designed to chat and assist you with various tasks.
+Welcome to Quantron, your personal assistant! Quantron is designed to chat and assist you with various tasks.
 
 ## Project Description
 - A personal project developed by myself, unveiling a rudimentary web application featuring a mediocre chatbot
@@ -32,13 +32,13 @@ To access Quantron, simply visit the following website: http://sheng254.pythonan
 - 🤔: how are you?
 - 🤖: Ah, I'm floating on a cloud of tranquility and contentment.
 - 🤔: what can you do?
-- 🤖: I can can engage in conversation, provide random quotes, jokes, translations, predict gender and nationality, suggest random activities, perform calculations, and generate responses using predefined patterns. What can I help you with today?
+- 🤖: I can engage in conversation, provide random quotes, jokes, translations, predict gender and nationality, suggest random activities, perform calculations, and generate responses using predefined patterns. What can I help you with today?
 - 🤔: suggest me an activity
-- 🤖: Here's a random activity suggestion: Write a handwritten letter to somebody
+- 🤖: Write a handwritten letter to somebody
 - 🤔: translate im going back to Chinese (simplified)
 - 🤖: The translation of 'im going back' to chinese (simplified) is: '我要回去了'
 - 🤔: tell me a joke
-- 🤖: Why did the cat sit on the computer? Because it wanted to keep an eye on the mouse. Clever, right?
+- 🤖: The past, the present and the future walk into a bar. It was tense.
 - 🤔: calculate 2000 + 3000 / 200 - 2
 - 🤖: The answer is 2013.0
 - 🤔 : I need a good quote to improve my mood
