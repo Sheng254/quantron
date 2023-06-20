@@ -5,28 +5,30 @@
 Welcome to Quantron, your personal assistant! Quantron is designed to chat and assist you with various tasks.
 
 ## Project Description
-- A personal project developed by myself, unveiling a rudimentary web application featuring a mediocre chatbot
+- A personal project developed by myself, unveiling a rudimentary web application featuring a non-AI chatbot
 - Developed using a combination of Python, HTML, CSS, and JavaScript
-- Comprises four punctiliously organised files, each serving a distinctive purpose:
+- Comprises four organised files:
    - app.py (Backend powerhouse)
    - index.html (Frontend masterpiece)
-   - styles.css (Aesthetically pleasing touch)
+   - styles.css (Aesthetically pleasing design)
    - script.js (Interactive wizardry)
 - Displayed on the PythonAnywhere web platform
 
 ## Features
-- **Type Interaction:** Simply type in the chat box and click the "Send" button to communicate with Quantron.
-- **Interactive Chat:** Engage with Quantron through text-based communication using specific keywords and phrases. Quantron responds with pre-scripted messages based on the recognised input. Please note that the responses are limited to the predetermined set of keywords and phrases.
+- **Type Interaction:** Simply type in the chat box and either click the "Send" button or press the enter key to communicate.
+- **Clear History:** Easily remove your chat history with the "Reset" button.
+- **Clickable Prompts:** Click on the provided prompts to initiate specific actions or queries with Quantron.
+- **Interactive Chat:** Engage with Quantron using specific keywords and phrases, and receive pre-scripted responses based on the recognised input. Please note that the responses are limited to the predetermined set of keywords and phrases.
 - **Random Quotes:** Get random quotes from famous personalities to inspire and motivate you.
 - **Random Jokes:** Enjoy a good laugh with Quantron's collection of random jokes.
-- **Translation:** Quantron can translate text to different languages using the Google Translate API.
+- **Translation:** Translate text to different languages using the Google Translate API.
 - **Gender Prediction:** Predict the gender of a given name using the Genderize API.
 - **Nationality Prediction:** Predict the nationality associated with a given name using the Nationalize API.
 - **Suggest Random Activity:** Suggest random activities to help you find something interesting to do.
-- **Calculations:** Quantron can perform simple arithmetic for you.
+- **Calculations:** Acquire the answers to simple arithmetic problems with ease.
 
 ## Accessing Quantron
-To access Quantron, simply visit the following website: http://sheng254.pythonanywhere.com
+To access Quantron, simply visit the following website: https://sheng254.pythonanywhere.com
 
 ## Usage Examples 
 - 🤔: how are you?
