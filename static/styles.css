@@ -19,8 +19,9 @@
     font-size: 30px;
     font-weight: bold;
     border: none;
+    border: 2px solid #00ff08; 
     border-radius: 5px;
-    background-color: #22c55e;
+    background-color: #1ab955;
     color: #fff;
     cursor: pointer;
     margin-bottom: 0.5rem;
@@ -28,7 +29,7 @@
 }
 
 #yesButton:hover, #noButton:hover {
-    background-color: #1e9e48;
+    background-color: #157735;
 }
 
 #yesButton:focus, #noButton:focus {
@@ -128,11 +129,20 @@
 .user-input-container #sendButton {
   background-color: #22c55e;
   color: #fff;
+  border: 4px solid #22c55e; 
+}
+
+#sendButton:hover {
+  background-color: #377035;
 }
 
 .user-input-container #clearButton {
   background-color: #dc3545;
   color: #fff;
+  border: 4px solid #dc3545; 
+}
+#clearButton:hover {
+  background-color: #ff00dd;
 }
 
 .user-input-container button:active {
@@ -154,12 +164,17 @@
   display: inline-block;
   padding: 5px 10px; 
   background-color: #f1f1f1;
+  border: 4px solid #f1f1f1; 
   border-radius: 10px; 
   margin-bottom: 10px;
   color: #333;
   font-size: 24px; 
   font-weight: bold;
   transition: background-color 0.3s ease;
+}
+
+.message-text:hover {
+  background-color: #bebebe;
 }
 
 
