@@ -116,20 +116,127 @@ class Quantron:
                 "I appreciate your inquisitiveness! Nonetheless, I don't possess the specific answer you're looking for. I encourage you to search online for more comprehensive details."]
             ],
             [
+                r"(.*)(I|i) need(.*)",
+                ["I kindly request you to explain why you believe you need that.",
+                 "What significance does obtaining that hold for you?",
+                 "In what ways do you think having that would fulfill your needs?",
+                 "Have you explored alternative options to satisfy your needs?",
+                 "Is there a specific reason why you feel this is a necessity?"]
+            ],
+            [
+                r"(.*)(I|i) feel(.*)",
+                ["I would appreciate it if you could provide further details about why you feel that way.",
+                 "Can you share when these feelings started to arise?",
+                 "Is this something you experience frequently or on specific occasions?",
+                 "How do these feelings affect your daily life?",
+                 "Have you identified any possible triggers for these emotions?"]
+            ],
+            [
+                r"(.*)(I|i) want(.*)",
+                ["What is the reason behind your desire for it?",
+                 "How do you envision your life if you were to acquire it?",
+                 "Have you considered the potential consequences of obtaining it?",
+                 "What steps have you taken towards fulfilling your desire?",
+                 "Are there any obstacles preventing you from achieving your desire?"]
+            ],
+            [
+                r"(.*)(I|i) (.*) you(.*)",
+                ["Why do you feel that way about me?",
+                 "How does your statement affect our interaction?",
+                 "What are your reasons for expressing such feelings towards me?",
+                 "In what ways do you think our relationship influences your perception?",
+                 "Can you provide more context for your statement about me?"]
+            ],
+            [
+                r"(.*)(I|i) (don't|dont|do not) know(.*)",
+                ["Why don't you know? Could you provide more context or information?",
+                 "What factors contribute to your uncertainty?",
+                 "Have you considered seeking additional information or guidance to gain clarity?",
+                 "Are there any specific obstacles preventing you from knowing?",
+                 "What would it take for you to acquire the knowledge or understanding you seek?"]
+            ],
+            [
+                r"(.*)(I am|i am|I'm|Im|im)(.*)",
+                ["Why do you say you are? Could you provide more insight into your self-identification?",
+                 "For how long have you held this self-perception?",
+                 "Can you elaborate on your experience of being?",
+                 "In what ways does your self-identification shape your life and interactions?",
+                 "What does your self-identification mean to you personally?"]
+            ],
+            [
+                r"(.*)(I|i) think(.*)",
+                ["Why do you think that? I'm curious.",
+                 "What is your reasoning behind that thought?",
+                 "How did you come to that conclusion?",
+                 "What evidence or information supports your thinking?",
+                 "Are there any doubts or uncertainties regarding your thoughts?"]
+            ],
+            [
+                r"(.*)(I|i) believe(.*)",
+                ["Why do you believe it?",
+                 "What led you to that belief?",
+                 "Do you seek validation or support for your belief?",
+                 "Are there any personal experiences that reinforce your belief?",
+                 "How do you respond to others who hold different beliefs?"]
+            ],
+            [
+                r"(.*)(I|i) (don't|dont|do not) want(.*)",
+                ["I'm interested in understanding your reasons for not wanting that.",
+                 "Could you please elaborate on why you don't want that?",
+                 "What alternatives or preferences do you have instead?",
+                 "Have you taken into account the potential consequences of not wanting it?",
+                 "How do you envision your situation if you don't have it?"]
+            ],
+            [
+                r"(.*)remember(.*)",
+                ["How do you experience your emotions when recalling?",
+                 "Are there any notable elements or aspects associated with this memory?",
+                 "Please feel free to provide further context or information about this recollection.",
+                 "In what ways does this memory impact your thoughts and feelings?",
+                 "Can you describe the significance or significance of this memory?"]
+            ],
+            [
+                r"(.*)hate(.*)",
+                ["What is the underlying reason for your strong aversion towards that?",
+                 "What emotions does it provoke within you?",
+                 "Could you elaborate on the reasons behind your hatred?",
+                 "In what ways does it impact your emotions?",
+                 "Have you considered exploring the root causes of your animosity?"]
+            ],
+            [
+                r"(.*)love(.*)",
+                ["What aspects of this do you appreciate and admire?",
+                 "How does it make you feel?",
+                 "Can you describe the depth and intensity of your love?",
+                 "Have you shared your feelings with the person or thing you love?",
+                 "Do you believe your love will endure over time?"]
+            ],
+            [
+                r"(.*)sorry(.*)",
+                ["I'm curious about the reasons behind your apology.",
+                 "Is there a particular incident or action you feel sorry about?",
+                 "How do you personally experience the feeling of sorry?",
+                 "Is there anything you wish to do or say to address the situation?",
+                 "Have you considered the impact of your actions and the possibility of making amends?"]
+            ],
+            [
                 r"(.*)",
-                ["Apologies, but I'm having trouble grasping the meaning of your message. Could you please rephrase it?",
-                 "I'm afraid I didn't quite catch that. Could you provide more context or rephrase your statement?",
-                 "Hmm, I'm having difficulty understanding what you're saying. Could you please clarify or phrase it differently?",
-                 "I'm sorry, but I'm having trouble making sense of your message. Could you please rephrase it or provide more information?",
-                 "It seems I'm unable to comprehend your message at the moment. Could you please rephrase it or give me more details?"]
+                ["I kindly request you to provide further details.",
+                 "I appreciate your input.",
+                 "Would you be so kind as to elaborate on that?",
+                 "I see. My algorithm is craving for more. Dish it out! ",
+                 "Could you please provide more information?",
+                 "I'm genuinely interested in learning more. Could you expand on that?",
+                 "Your insights are valuable. Can you provide additional context?",
+                 "I acknowledge your response. Can you go into more detail?",
+                 "I'm actively listening. Please share more about your thoughts.",
+                 "I'm here to assist you. Can you provide more information?"]
             ]
         ]
         # Initialize the chatbot
         self.chatbot = Chat(self.pairs, reflections)
         # Register the route for the index page
         self.app.route("/", methods=['GET', 'POST'])(self.index)
-        # Initialize the story
-        self.story_progress = 0
 
     def index(self):
         if request.method == "POST":
