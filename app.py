@@ -116,28 +116,20 @@ class Quantron:
                 "I appreciate your inquisitiveness! Nonetheless, I don't possess the specific answer you're looking for. I encourage you to search online for more comprehensive details."]
             ],
             [
-                r"(.*)(I|i) need(.*)",
-                ["I kindly request you to explain why you believe you need that.",
-                 "What significance does obtaining that hold for you?",
-                 "In what ways do you think having that would fulfill your needs?",
-                 "Have you explored alternative options to satisfy your needs?",
-                 "Is there a specific reason why you feel this is a necessity?"]
+                r"(.*)(I|i) (require|demand|seek|crave|desire|want|wish|need)(.*)",
+                ["I kindly request you to explain why you feel it is important to have that.",
+                "What significance does obtaining that hold for you?",
+                "In what ways do you think having that would fulfill your desires?",
+                "Have you considered alternative options to satisfy your wants?",
+                "Is there a specific reason why you believe this is something you should have?"]
             ],
             [
-                r"(.*)(I|i) feel(.*)",
+                r"(.*)(I|i) (feel|sense|experience|perceive|detect|notice)(.*)",
                 ["I would appreciate it if you could provide further details about why you feel that way.",
                  "Can you share when these feelings started to arise?",
                  "Is this something you experience frequently or on specific occasions?",
                  "How do these feelings affect your daily life?",
                  "Have you identified any possible triggers for these emotions?"]
-            ],
-            [
-                r"(.*)(I|i) want(.*)",
-                ["What is the reason behind your desire for it?",
-                 "How do you envision your life if you were to acquire it?",
-                 "Have you considered the potential consequences of obtaining it?",
-                 "What steps have you taken towards fulfilling your desire?",
-                 "Are there any obstacles preventing you from achieving your desire?"]
             ],
             [
                 r"(.*)(I|i) (.*) you(.*)",
@@ -148,12 +140,20 @@ class Quantron:
                  "Can you provide more context for your statement about me?"]
             ],
             [
-                r"(.*)(I|i) (don't|dont|do not) know(.*)",
+                r"(.*)(I|i) (don't|dont|do not) know(.*)|(.*)no (clue|idea|answer)(.*)|(.*)(unsure|unaware|idk|IDK)(.*)|(.*)not (familiar|certain|sure)(.*)",
                 ["Why don't you know? Could you provide more context or information?",
                  "What factors contribute to your uncertainty?",
                  "Have you considered seeking additional information or guidance to gain clarity?",
                  "Are there any specific obstacles preventing you from knowing?",
                  "What would it take for you to acquire the knowledge or understanding you seek?"]
+            ],
+            [
+                r"(.*)(I|i) (cannot|can't|could not|unable|couldn't)(.*)",
+                ["What is preventing you from doing so?",
+                "Is there a specific reason why you are unable to?",
+                "Have you explored alternative approaches or sought assistance?",
+                "Are there any constraints or limitations you're facing?",
+                "Is there something I can do to help you overcome this obstacle?"]
             ],
             [
                 r"(.*)(I am|i am|I'm|Im|im)(.*)",
@@ -164,7 +164,7 @@ class Quantron:
                  "What does your self-identification mean to you personally?"]
             ],
             [
-                r"(.*)(I|i) think(.*)",
+                r"(.*)(I|i) (think|assume|suppose|presume|consider|reckon)(.*)",
                 ["Why do you think that? I'm curious.",
                  "What is your reasoning behind that thought?",
                  "How did you come to that conclusion?",
@@ -172,7 +172,7 @@ class Quantron:
                  "Are there any doubts or uncertainties regarding your thoughts?"]
             ],
             [
-                r"(.*)(I|i) believe(.*)",
+                r"(.*)(I|i) (believe|trust|have faith|hold|regard|deem)(.*)",
                 ["Why do you believe it?",
                  "What led you to that belief?",
                  "Do you seek validation or support for your belief?",
@@ -180,7 +180,7 @@ class Quantron:
                  "How do you respond to others who hold different beliefs?"]
             ],
             [
-                r"(.*)(I|i) (don't|dont|do not) want(.*)",
+                r"(.*)(I|i) (don't|dont|do not) (require|demand|seek|crave|desire|want|wish|need)(.*)",
                 ["I'm interested in understanding your reasons for not wanting that.",
                  "Could you please elaborate on why you don't want that?",
                  "What alternatives or preferences do you have instead?",
@@ -188,7 +188,7 @@ class Quantron:
                  "How do you envision your situation if you don't have it?"]
             ],
             [
-                r"(.*)remember(.*)",
+                r"(.*)(remember|recall)(.*)|(.*)(not|never|cannot|can't|cant) forget(.*)",
                 ["How do you experience your emotions when recalling?",
                  "Are there any notable elements or aspects associated with this memory?",
                  "Please feel free to provide further context or information about this recollection.",
@@ -196,7 +196,7 @@ class Quantron:
                  "Can you describe the significance or significance of this memory?"]
             ],
             [
-                r"(.*)hate(.*)",
+                r"(.*)(hate|detest|despise|dislike)(.*)",
                 ["What is the underlying reason for your strong aversion towards that?",
                  "What emotions does it provoke within you?",
                  "Could you elaborate on the reasons behind your hatred?",
@@ -204,20 +204,44 @@ class Quantron:
                  "Have you considered exploring the root causes of your animosity?"]
             ],
             [
-                r"(.*)love(.*)",
+                r"(.*)(love|adore|cherish|appreciate|treasure|admire|relish|enjoy|affection)(.*)",
                 ["What aspects of this do you appreciate and admire?",
                  "How does it make you feel?",
                  "Can you describe the depth and intensity of your love?",
                  "Have you shared your feelings with the person or thing you love?",
-                 "Do you believe your love will endure over time?"]
+                 "Do you believe your feelings will endure over time?"]
             ],
             [
-                r"(.*)sorry(.*)",
+                r"(.*)(sorry|apologize|apologise|regret|apologies)(.*)(.*)forgive me(.*)",
                 ["I'm curious about the reasons behind your apology.",
                  "Is there a particular incident or action you feel sorry about?",
                  "How do you personally experience the feeling of sorry?",
                  "Is there anything you wish to do or say to address the situation?",
                  "Have you considered the impact of your actions and the possibility of making amends?"]
+            ],
+            [
+                r"(.*)(yes|yeah|yep|yup|ya|sure|absolutely|definitely|certainly)(.*)",
+                ["That's great to hear! What else can I assist you with?",
+                "Wonderful! How can I be of further help to you?",
+                "Fantastic! Is there anything specific you would like to know or discuss?",
+                "Excellent! Feel free to ask me any questions you may have.",
+                "Awesome! Let me know how I can assist you."]
+            ],
+            [
+                r"(.*)(no|nope|nah|not (really|interested))(.*)",
+                ["Alright, no problem. If you change your mind or have any questions, feel free to ask.",
+                "Okay, understood. Let me know if there's anything else I can assist you with.",
+                "Got it. If there's ever anything you'd like to know or discuss, feel free to reach out.",
+                "Sure, no worries. If there's a different topic you'd like to explore, just let me know.",
+                "I understand. If you ever need assistance in the future, don't hesitate to ask."]
+            ],
+            [
+                r"(.*)(ok|okay|alright|sure|fine|got it|understood|understand|(.*)agree(.*)|(.*)accept(.*))(.*)",
+                ["Alright, let's proceed. How can I assist you further?",
+                "Great! If you have any specific questions or need guidance, feel free to ask.",
+                "Perfect! Let me know what you'd like to explore or discuss.",
+                "Okay, understood. If there's anything specific you'd like to know, just let me know.",
+                "Got it. If you need any further information or support, feel free to reach out."]
             ],
             [
                 r"(.*)",
