@@ -212,7 +212,7 @@ class Quantron:
                  "Do you believe your feelings will endure over time?"]
             ],
             [
-                r"(.*)(sorry|apologize|apologise|regret|apologies)(.*)(.*)forgive me(.*)",
+                r"(.*)(sorry|apologize|apologise|regret|apologies)(.*)|(.*)forgive me(.*)",
                 ["I'm curious about the reasons behind your apology.",
                  "Is there a particular incident or action you feel sorry about?",
                  "How do you personally experience the feeling of sorry?",
