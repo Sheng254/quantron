@@ -2,6 +2,7 @@
 const chatlog = document.getElementById('chatlog');
 const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
+const micButton = document.getElementById('micButton');
 const clearButton = document.getElementById('clearButton');
 const authenticationSection = document.getElementById('authentication');
 const yesButton = document.getElementById('yesButton');
@@ -94,6 +95,62 @@ function handleUserInput() {
     }
 }
 
+// Create a SpeechRecognition object
+const recognition = new webkitSpeechRecognition();
+recognition.continuous = false;
+recognition.interimResults = false;
+recognition.lang = 'en-US';
+
+// Flag to indicate if the microphone button is being held
+let isMicButtonHeld = false;
+
+// Event listener for mic button mouse down
+micButton.addEventListener('mousedown', () => {
+    isMicButtonHeld = true;
+    micButton.classList.add('active'); // Add a CSS class for visual indication
+    recognition.start();
+});
+
+// Event listener for mic button mouse up
+micButton.addEventListener('mouseup', () => {
+    isMicButtonHeld = false;
+    micButton.classList.remove('active'); // Remove the CSS class
+    recognition.stop();
+
+    // Send the recognized text to the server
+    if (transcript) {
+        sendRecognizedTextToServer(transcript);
+    }
+});
+
+// Function to send recognized text to the server
+function sendRecognizedTextToServer(text) {
+    fetch('/recognize', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: text }),
+    })
+    .then(response => response.text())
+    .then(text => {
+        console.log(text);
+        displayBotMessage(text); // Display bot's response
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+// Event listener for speech recognition result
+recognition.onresult = function (event) {
+    if (isMicButtonHeld) {
+        const transcript = event.results[0][0].transcript;
+        displayUserMessage(transcript);
+        sendUserMessageToServer(transcript);
+    }
+};
+
 // Function to display user message in the chat log
 function displayUserMessage(message) {
     const userMessageElement = document.createElement('div');
@@ -138,13 +195,13 @@ function clearChat() {
 
     // Display the initial bot message again
     const initialBotMessage = "👋 Welcome to Quantron, your personal assistant! 🚀";
-    const instructionMessage = "💬 To begin, type your messages in the chat. I'm here to assist you. 🤝";
+    const instructionMessage = "💬 Type or use speech recognition by clicking the mic button, holding to speak, and releasing when done. Happy chatting! 😊";
     displayBotMessage(initialBotMessage);
     displayBotMessage(instructionMessage);
 }
 
 // Display the initial bot message
 const initialBotMessage = "👋 Welcome to Quantron, your personal assistant! 🚀";
-const instructionMessage = "💬 To begin, type your messages in the chat. I'm here to assist you. 🤝";
+const instructionMessage = "💬 Type or use speech recognition by clicking the mic button, holding to speak, and releasing when done. Happy chatting! 😊";
 displayBotMessage(initialBotMessage);
 displayBotMessage(instructionMessage);
