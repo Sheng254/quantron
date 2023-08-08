@@ -1,4 +1,4 @@
-# Quantron - Personal Assistant
+# Quantron Chatbot Web App
 
 ![Quantron](static/Quantron.png)
 
