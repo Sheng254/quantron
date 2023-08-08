@@ -16,6 +16,7 @@ Welcome to Quantron, your personal assistant! Quantron is designed to chat and a
 
 ## Features
 - **Type Interaction:** Simply type in the chat box and either click the "Send" button or press the enter key to communicate.
+- **Speech Interaction:** Interact with Quantron naturally by clicking the mic button, holding it while speaking, and releasing it when done. 
 - **Clear History:** Easily remove your chat history with the "Reset" button.
 - **Clickable Prompts:** Click on the provided prompts to initiate specific actions or queries with Quantron.
 - **Interactive Chat:** Engage with Quantron using specific keywords and phrases, and receive pre-scripted responses based on the recognised input. Please note that the responses are limited to the predetermined set of keywords and phrases.
@@ -57,7 +58,7 @@ To access Quantron, simply visit the following website: https://sheng254.pythona
 - 🤖: Farewell! I'll remember this conversation fondly.
 
 ## Potential Enhancements for the Future
-- Include the voice interaction feature.
+- Enhance the speech recognition feature for better speed, accuracy, and usability.
 - Add more features and capabilities to Quantron based on user feedback.
 - Ameliorate user-friendliness and interactivity by improving the overall design aesthetics.
 - Integrate machine learning (ML) and deep learning (DL) algorithms to enable more precise and targeted responses.
