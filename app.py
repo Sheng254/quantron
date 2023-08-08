@@ -3,6 +3,7 @@ from nltk.chat.util import Chat, reflections
 import random
 from googletrans import Translator
 import requests
+import speech_recognition as sr
 
 
 class Quantron:
@@ -259,17 +260,47 @@ class Quantron:
         ]
         # Initialize the chatbot
         self.chatbot = Chat(self.pairs, reflections)
+        # Create a speech recognition instance
+        self.recognizer = sr.Recognizer()
         # Register the route for the index page
         self.app.route("/", methods=['GET', 'POST'])(self.index)
+        # Register the route for speech recognition
+        self.app.route("/recognize", methods=['POST'])(self.recognize)
+
+    def recognize_speech(self):
+        with sr.Microphone() as source:
+            print("Please speak something...")
+            try:
+                audio = self.recognizer.listen(source, timeout=5)
+                text = self.recognizer.recognize_google(audio)
+                return text
+            except sr.WaitTimeoutError:
+                return None
+            except sr.UnknownValueError:
+                return None
 
     def index(self):
         if request.method == "POST":
             userPrompt = request.json['message']
             print(userPrompt)
-            # Do something with userPrompt, e.g., process the input
+
+            if userPrompt == "start recognition":
+                recognized_text = self.recognize_speech()
+                if recognized_text:
+                    return self.chat(recognized_text)
+                else:
+                    return "Sorry, I couldn't recognize any speech."
+
             return self.chat(userPrompt)
         else:
             return render_template("index.html")
+
+    def recognize(self):
+        recognized_text = self.recognize_speech()
+        if recognized_text:
+            return recognized_text
+        else:
+            return "Sorry, I couldn't recognize any speech."
 
     def get_quote(self):
         quotes = [
